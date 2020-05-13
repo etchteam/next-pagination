@@ -1,19 +1,19 @@
 {
-  "name": "best-damn-pagination-example",
-  "homepage": "https://etchteam.github.io/best-damn-pagination",
+  "name": "next-pagination-example",
+  "homepage": "https://etchteam.github.io/next-pagination",
   "version": "0.0.0",
   "private": true,
   "dependencies": {
+    "@zeit/next-source-maps": "0.0.4-canary.1",
+    "next": "9.4.0",
+    "next-pagination": "file:..",
     "react": "file:../node_modules/react",
-    "react-dom": "file:../node_modules/react-dom",
-    "react-scripts": "file:../node_modules/react-scripts",
-    "best-damn-pagination": "file:.."
+    "react-dom": "file:../node_modules/react-dom"
   },
   "scripts": {
-    "start": "node ../node_modules/react-scripts/bin/react-scripts.js start",
-    "build": "node ../node_modules/react-scripts/bin/react-scripts.js build",
-    "test": "node ../node_modules/react-scripts/bin/react-scripts.js test",
-    "eject": "node ../node_modules/react-scripts/bin/react-scripts.js eject"
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
   },
   "eslintConfig": {
     "extends": "react-app"

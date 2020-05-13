@@ -1,10 +1,10 @@
 {
-  "name": "best-damn-pagination",
+  "name": "next-pagination",
   "version": "1.0.0",
-  "description": "The best damn pagination component. For React.",
+  "description": "Pagination component for Next.js apps",
   "author": "etchteam",
   "license": "MIT",
-  "repository": "etchteam/best-damn-pagination",
+  "repository": "etchteam/next-pagination",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
@@ -49,5 +49,11 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "classnames": "2.2.6",
+    "lodash": "4.17.15",
+    "next": "9.3.5",
+    "query-string": "6.12.1"
+  }
 }

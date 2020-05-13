@@ -1,7 +1,7 @@
-import { ExampleComponent } from '.'
+import { Pagination } from '.'
 
-describe('ExampleComponent', () => {
+describe('Pagination', () => {
   it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
+    expect(Pagination).toBeTruthy()
   })
 })
