@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
 import NextLink from 'next/link'
@@ -59,25 +59,30 @@ const getPageNumbers = ({
 
 export const Pagination = ({ total }) => {
   const router = useRouter()
-  if (!router) return null
+  const [hasRouter, setHasRouter] = useState(false)
+  useEffect(() => {
+    setHasRouter(true)
+  }, [router])
+
+  if (!hasRouter) return null
   const query = pickBy({ ...(router.query || {}) }, (q) => !isEmpty(q))
   const currentPage = Number(query.page || 1)
   const pageSize = Number(query.size || 20)
   const isLastPage = currentPage * pageSize >= total
   const pageNumbers = getPageNumbers({ currentPage, pageSize, total })
 
+  const url = (page) =>
+    `?${queryString.stringify({
+      ...query,
+      page
+    })}`
+
   return (
     <nav className={styles['next-pagination']} aria-label='pagination'>
       <List>
         <Item>
           {currentPage !== 1 ? (
-            <NextLink
-              href={`?${queryString.stringify({
-                ...query,
-                page: currentPage - 1
-              })}`}
-              passHref
-            >
+            <NextLink href={url(currentPage - 1)} passHref prefetch={false}>
               <Link label='Previous page'>
                 <Icon icon='chevron-left' />
               </Link>
@@ -91,7 +96,7 @@ export const Pagination = ({ total }) => {
         {pageNumbers.map((pageNumber, i) =>
           pageNumber === '...' ? (
             <Item key={`${pageNumber}${i}`} hellip>
-              <Link disabled label="ellipsis">
+              <Link disabled label='ellipsis'>
                 &hellip;
               </Link>
             </Item>
@@ -106,13 +111,7 @@ export const Pagination = ({ total }) => {
                   {pageNumber}
                 </Link>
               ) : (
-                <NextLink
-                  href={`?${queryString.stringify({
-                    ...query,
-                    page: pageNumber
-                  })}`}
-                  passHref
-                >
+                <NextLink href={url(pageNumber)} passHref prefetch={false}>
                   <Link label={`Page ${pageNumber}`}>{pageNumber}</Link>
                 </NextLink>
               )}
@@ -121,13 +120,7 @@ export const Pagination = ({ total }) => {
         )}
         <Item>
           {!isLastPage ? (
-            <NextLink
-              href={`?${queryString.stringify({
-                ...query,
-                page: currentPage + 1
-              })}`}
-              passHref
-            >
+            <NextLink href={url(currentPage + 1)} passHref prefetch={false}>
               <Link label='Next page'>
                 <Icon icon='chevron-right' />
               </Link>

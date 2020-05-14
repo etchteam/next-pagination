@@ -1,3 +1,7 @@
 const withSourceMaps = require('@zeit/next-source-maps')();
 
-module.exports = withSourceMaps({});
+const isProd = (process.env.NODE_ENV || 'production') === 'production'
+
+module.exports = withSourceMaps({
+  assetPrefix: isProd ? '/next-pagination' : ''
+});
