@@ -25,7 +25,7 @@
   display: none;
 }
 
-@media screen and (min-width: 30em) {
+@media screen and (min-width: 37.5em) {
   .next-pagination__item {
     display: block;
   }
