@@ -4,6 +4,8 @@
 
 [![NPM](https://img.shields.io/npm/v/next-pagination.svg)](https://www.npmjs.com/package/next-pagination) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+TL;DR Just show me the [DEMO](https://etchteam.github.io/next-pagination)
+
 ## Install
 
 ```bash
