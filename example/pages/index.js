@@ -4,9 +4,10 @@ import { Pagination } from 'next-pagination'
 
 export default function Home() {
   return (
-    <div>
-      <h1>Pagination</h1>
+    <main>
+      <h1>Next Pagination</h1>
+      <p>A semantic, accessible, responsive, robust, pagination component for sites built with Next.js.</p>
       <Pagination total={1000} />
-    </div>
+    </main>
   );
 }

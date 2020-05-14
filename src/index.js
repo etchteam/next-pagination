@@ -11,7 +11,7 @@ import Item from './components/Item'
 import Link from './components/Link'
 import Icon from './components/Icon'
 
-import './index.css'
+import styles from './index.css'
 
 const getPageNumbers = ({
   currentPage,
@@ -59,7 +59,6 @@ const getPageNumbers = ({
 
 export const Pagination = ({ total }) => {
   const router = useRouter()
-  console.log(router);
   if (!router) return null
   const query = pickBy({ ...(router.query || {}) }, (q) => !isEmpty(q))
   const currentPage = Number(query.page || 1)
@@ -68,7 +67,7 @@ export const Pagination = ({ total }) => {
   const pageNumbers = getPageNumbers({ currentPage, pageSize, total })
 
   return (
-    <nav className='next-pagination' aria-label='pagination'>
+    <nav className={styles['next-pagination']} aria-label='pagination'>
       <List>
         <Item>
           {currentPage !== 1 ? (
@@ -84,7 +83,7 @@ export const Pagination = ({ total }) => {
               </Link>
             </NextLink>
           ) : (
-            <Link label='No previous available' disabled>
+            <Link label='No previous page available' disabled>
               <Icon icon='chevron-left' />
             </Link>
           )}
@@ -92,7 +91,9 @@ export const Pagination = ({ total }) => {
         {pageNumbers.map((pageNumber, i) =>
           pageNumber === '...' ? (
             <Item key={`${pageNumber}${i}`} hellip>
-              &hellip;
+              <Link disabled label="ellipsis">
+                &hellip;
+              </Link>
             </Item>
           ) : (
             <Item key={pageNumber}>
@@ -125,30 +126,51 @@ export const Pagination = ({ total }) => {
                 ...query,
                 page: currentPage + 1
               })}`}
+              passHref
             >
-              <Link label='Next page'>Next page</Link>
+              <Link label='Next page'>
+                <Icon icon='chevron-right' />
+              </Link>
             </NextLink>
           ) : (
-            <Link label='No more available' disabled>
+            <Link label='No next page available' disabled>
               <Icon icon='chevron-right' />
             </Link>
           )}
         </Item>
       </List>
 
-      <form method='GET' action=''>
+      <form method='GET' action='' className={styles['next-pagination__form']}>
         <input type='hidden' name='page' value={currentPage} />
-        <label htmlFor='size'>
+        <label
+          htmlFor='next-pagination__size'
+          className={styles['next-pagination__label']}
+        >
           per page
         </label>
-        <select name='size' id='size' defaultValue={pageSize}>
+        <select
+          className={styles['next-pagination__select']}
+          name='size'
+          id='next-pagination__size'
+          defaultValue={pageSize}
+          onChange={(e) => {
+            const url = `${router.pathname}?${queryString.stringify({
+              ...query,
+              page: 1,
+              size: e.target.value
+            })}`
+            router.push(url)
+          }}
+        >
           <option>20</option>
           <option>40</option>
           <option>60</option>
           <option>80</option>
           <option>100</option>
         </select>
-        <button type='submit'>Submit</button>
+        <button className={styles['next-pagination__submit']} type='submit'>
+          Set page size
+        </button>
       </form>
     </nav>
   )

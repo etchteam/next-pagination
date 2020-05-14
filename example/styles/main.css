@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: sans-serif;
+}
+
+main {
+  margin: auto;
+  max-width: 50em;
+  padding: 5%;
+}

@@ -15,12 +15,12 @@ npm install --save next-pagination
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'next-pagination'
+import Pagination from 'next-pagination'
 import 'next-pagination/dist/index.css'
 
 class Example extends Component {
   render() {
-    return <MyComponent />
+    return <Pagination total={1000} />
   }
 }
 ```

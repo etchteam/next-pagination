@@ -2,12 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
+import styles from '../index.css'
+
 export default class Link extends React.Component {
   render() {
     const { children, current, disabled, label, ...props } = this.props
-    const cx = classNames('next-pagination__link', {
-      'next-pagination__link--current': current,
-      'next-pagination__link--disabled': disabled
+    const cx = classNames(styles['next-pagination__link'], {
+      [`${styles['next-pagination__link--current']}`]: current,
+      [`${styles['next-pagination__link--disabled']}`]: disabled
     })
 
     return (
