@@ -11,7 +11,7 @@ import Item from './components/Item'
 import Link from './components/Link'
 import Icon from './components/Icon'
 
-import styles from './index.css'
+import defaultTheme from './index.css'
 
 const getPageNumbers = ({
   currentPage,
@@ -57,7 +57,8 @@ const getPageNumbers = ({
   return pageNumbers
 }
 
-export const Pagination = ({ total }) => {
+export const Pagination = ({ total, theme }) => {
+  const styles = theme || defaultTheme
   const router = useRouter()
   const [hasRouter, setHasRouter] = useState(false)
   useEffect(() => {
@@ -79,54 +80,57 @@ export const Pagination = ({ total }) => {
 
   return (
     <nav className={styles['next-pagination']} aria-label='pagination'>
-      <List>
-        <Item>
+      <List theme={styles}>
+        <Item theme={styles}>
           {currentPage !== 1 ? (
             <NextLink href={url(currentPage - 1)} passHref prefetch={false}>
-              <Link label='Previous page'>
+              <Link label='Previous page' theme={styles}>
                 <Icon icon='chevron-left' />
               </Link>
             </NextLink>
           ) : (
-            <Link label='No previous page available' disabled>
+            <Link label='No previous page available' disabled theme={styles}>
               <Icon icon='chevron-left' />
             </Link>
           )}
         </Item>
         {pageNumbers.map((pageNumber, i) =>
           pageNumber === '...' ? (
-            <Item key={`${pageNumber}${i}`} hellip>
-              <Link disabled label='ellipsis'>
+            <Item key={`${pageNumber}${i}`} hellip theme={styles}>
+              <Link disabled label='ellipsis' theme={styles}>
                 &hellip;
               </Link>
             </Item>
           ) : (
-            <Item key={pageNumber}>
+            <Item key={pageNumber} theme={styles}>
               {pageNumber === currentPage ? (
                 <Link
                   label={`Page ${pageNumber}, current page`}
                   disabled
                   current
+                  theme={styles}
                 >
                   {pageNumber}
                 </Link>
               ) : (
                 <NextLink href={url(pageNumber)} passHref prefetch={false}>
-                  <Link label={`Page ${pageNumber}`}>{pageNumber}</Link>
+                  <Link label={`Page ${pageNumber}`} theme={styles}>
+                    {pageNumber}
+                  </Link>
                 </NextLink>
               )}
             </Item>
           )
         )}
-        <Item>
+        <Item theme={styles}>
           {!isLastPage ? (
             <NextLink href={url(currentPage + 1)} passHref prefetch={false}>
-              <Link label='Next page'>
+              <Link label='Next page' theme={styles}>
                 <Icon icon='chevron-right' />
               </Link>
             </NextLink>
           ) : (
-            <Link label='No next page available' disabled>
+            <Link label='No next page available' disabled theme={styles}>
               <Icon icon='chevron-right' />
             </Link>
           )}
@@ -170,7 +174,8 @@ export const Pagination = ({ total }) => {
 }
 
 Pagination.propTypes = {
-  total: PropTypes.number.isRequired
+  total: PropTypes.number.isRequired,
+  theme: PropTypes.object
 }
 
 Pagination.defaultProps = {

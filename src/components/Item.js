@@ -1,12 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import styles from '../index.css'
-
-export default function Item({ children }) {
-  return <li className={styles['next-pagination__item']}>{children}</li>
+export default function Item({ children, theme }) {
+  return <li className={theme['next-pagination__item']}>{children}</li>
 }
 
 Item.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
+  theme: PropTypes.object.isRequired
 }

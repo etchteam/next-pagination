@@ -1,6 +1,7 @@
 .next-pagination {
   align-items: center;
   box-sizing: border-box;
+  color: #4f4f4f;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
@@ -19,7 +20,7 @@
 }
 
 .next-pagination__item {
-  border: 1px solid;
+  border: 1px solid #b7b7cb;
   display: none;
   margin-right: -1px;
 }
@@ -36,12 +37,11 @@
 }
 
 .next-pagination__item:first-child {
-  border-radius: 4px 0 0 4px;
+  border-radius: 3px 0 0 3px;
 }
 
 .next-pagination__item:last-child {
-  border-radius: 0 4px 4px 0;
-  border-right-width: 1px;
+  border-radius: 0 3px 3px 0;
   margin-right: 0;
 }
 
@@ -52,11 +52,13 @@
 }
 
 .next-pagination__link {
+  color: #006dcc;
   display: block;
   min-width: 2.5em;
   outline: 1px solid transparent;
   padding: .5em;
   text-align: center;
+  text-decoration: none;
   transition: outline-color .2s ease-in-out;
 }
 
@@ -67,12 +69,12 @@
 }
 
 .next-pagination__link--current {
-  background: rgba(0, 0, 0, 0.05);
+  background: #f0f0eb;
   pointer-events: none;
 }
 
 .next-pagination__link--disabled {
-  color: rgba(0, 0, 0, 0.75);
+  color: inherit;
   pointer-events: none;
 }
 
@@ -93,8 +95,9 @@
 
 .next-pagination__select {
   background-color: #fff;
-  border: 1px solid;
-  border-radius: 4px;
+  border: 1px solid #b7b7cb;
+  border-radius: 3px;
+  color: inherit;
   display: block;
   font-size: 1em;
   height: calc(26px + 1em);
