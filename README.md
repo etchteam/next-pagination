@@ -47,6 +47,8 @@ e.g. ?page=4&size=20
 
 The **default page** is 1. The **default size** is 20.
 
+You'll need to load the actual data from your API yourself. We're only here for the front-end!
+
 ## Props
 
 | Name                     | Type       | Description                               |
