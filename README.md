@@ -6,6 +6,8 @@
 
 TL;DR Just show me the [DEMO](https://etchteam.github.io/next-pagination)
 
+<img src="https://raw.githubusercontent.com/etchteam/next-pagination/master/example/public/example.png" alt="An example of the pagination UI in use" />
+
 ## Why use this pagination module?
 
 - **Accessible.** Semantic HTML and fully marked up with appropriate aria roles for assisted browsing.
