@@ -13,6 +13,7 @@ TL;DR Just show me the [DEMO](https://etchteam.github.io/next-pagination)
 - **Accessible.** Semantic HTML and fully marked up with appropriate aria roles for assisted browsing.
 - **Usable.** The base CSS styles account for keyboard focus states and fat finger touch targets.
 - **Responsive.** Works on all devices.
+- **Themeable.** Make it look however you want.
 - **Self contained.** There's only one required prop to get going. The rest of the logic is handled for you.
 - **Works with Next.** Integrated with the Next.js router.
 
