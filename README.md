@@ -72,6 +72,28 @@ class Example extends Component {
 
 The theme uses BEM class naming with the base class `next-pagination`. The file `/src/index.css` should give you a solid idea of what's needed.
 
+## Contribute
+
+This package was created with [create-react-library](https://github.com/transitive-bullshit/create-react-library#readme).
+
+### Setup
+
+To get set up you'll need to run `npm install && cd example && npm install`
+
+## Development
+
+In the root folder, run `npm run start`
+**At the same time**, in the example folder, run `npm run dev`
+Then head over to `localhost:3000` to see the example running.
+
+## Deploy the example
+
+In the root folder run `npm run deploy` to deploy the example to github pages on the `gh-pages` branch of your repo.
+
+## Publish to npm
+
+Feeling confident? Run `npm publish` to send the latest version to npm.
+
 ## License
 
 MIT © [etchteam](https://github.com/etchteam)
