@@ -8,11 +8,11 @@ TL;DR Just show me the [DEMO](https://etchteam.github.io/next-pagination)
 
 ## Why use this pagination module?
 
-- Accessible. Semantic HTML and fully marked up with appropriate aria roles for assisted browsing.
-- Usable. The base CSS styles account for keyboard focus states and fat finger touch targets.
-- Responsive. Works on all devices.
-- Self contained. There's only one required prop to get going. The rest of the logic is handled for you.
-- Works with Next. Integrated with the Next.js router.
+- **Accessible.** Semantic HTML and fully marked up with appropriate aria roles for assisted browsing.
+- **Usable.** The base CSS styles account for keyboard focus states and fat finger touch targets.
+- **Responsive.** Works on all devices.
+- **Self contained.** There's only one required prop to get going. The rest of the logic is handled for you.
+- **Works with Next.** Integrated with the Next.js router.
 
 ## Install
 
@@ -40,8 +40,19 @@ When used, the pagination component will reload the same route with added pagina
 - `page` for the page number the user is on.
 - `size` for the number of results per page.
 
+e.g. ?page=4&size=20
+
+The **default page** is 1. The **default size** is 20.
+
+## Props
+
+| Name                     | Type       | Description                               |
+| ------------------------ | ---------- | ----------------------------------------- |
+| `total`                  | `Number`   | **Required.** The total number of pages.  |
+| `theme`                  | `Object`   | A CSS modules style object.               |
+
 ## Theming
-Next.js natively supports CSS modules, so this component supports injecting CSS module styles.
+Next.js natively supports **CSS modules**, so this component supports injecting CSS module styles.
 
 Import the styles as you would for a normal component, but pass them as props.
 
@@ -57,13 +68,6 @@ class Example extends Component {
 ```
 
 The theme uses BEM class naming with the base class `next-pagination`. The file `/src/index.css` should give you a solid idea of what's needed.
-
-## Props
-
-| Name                     | Type       | Description                               |
-| ------------------------ | ---------- | ----------------------------------------- |
-| `total`                  | `Number`   | **Required.** The total number of pages.  |
-| `theme`                  | `Object`   | A CSS modules style object.               |
 
 ## License
 

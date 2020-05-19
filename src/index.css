@@ -60,7 +60,8 @@
   transition: outline-color .2s ease-in-out;
 }
 
-.next-pagination__link:hover {
+.next-pagination__link:hover,
+.next-pagination__link:focus {
   outline: 1px solid currentColor;
   position: relative;
   z-index: 1;
