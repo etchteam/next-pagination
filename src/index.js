@@ -49,8 +49,6 @@ const getPageNumbers = ({
     .map((pageNumber) => startPage + pageNumber)
     .filter((pageNumber) => pageNumber <= lastPageNumber && pageNumber > 0)
 
-  console.log(pageNumbers)
-
   if (pageNumbers[0] > 1) {
     if (pageNumbers[0] <= 2) {
       pageNumbers = [1, ...pageNumbers]
