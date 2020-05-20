@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Pagination } from 'next-pagination'
 
-import theme from '../styles/theme.module.css'
+import theme from '../styles/theme.module.scss'
 
 export default function Home() {
   return (

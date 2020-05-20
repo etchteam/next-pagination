@@ -10,8 +10,9 @@ import List from './components/List'
 import Item from './components/Item'
 import Link from './components/Link'
 import Icon from './components/Icon'
+import Select from './components/Select'
 
-import defaultTheme from './index.css'
+import defaultTheme from './index.module.scss'
 
 const getPageNumbers = ({
   currentPage,
@@ -19,7 +20,7 @@ const getPageNumbers = ({
   total,
   pageNumbersToShow = 3
 }) => {
-  const lastPageNumber = Math.ceil(total / pageSize);
+  const lastPageNumber = Math.ceil(total / pageSize)
   const currentPageNumber =
     currentPage <= lastPageNumber ? currentPage : lastPageNumber
   const maxPagesBeforeCurrentPage = Math.floor(pageNumbersToShow / 2)
@@ -31,10 +32,12 @@ const getPageNumbers = ({
     return [] // Don't show numbers if there's only 1 page
   }
 
-  if (currentPageNumber <= maxPagesBeforeCurrentPage) { // near the start
+  if (currentPageNumber <= maxPagesBeforeCurrentPage) {
+    // near the start
     startPage = 1
     endPage = pageNumbersToShow
-  } else if (currentPageNumber + maxPagesAfterCurrentPage >= lastPageNumber) { // near the end
+  } else if (currentPageNumber + maxPagesAfterCurrentPage >= lastPageNumber) {
+    // near the end
     startPage = lastPageNumber - pageNumbersToShow + 1
   } else {
     // somewhere in the middle
@@ -145,8 +148,8 @@ export const Pagination = ({ total, theme }) => {
         >
           per page
         </label>
-        <select
-          className={styles['next-pagination__select']}
+        <Select
+          theme={styles}
           name='size'
           id='next-pagination__size'
           defaultValue={pageSize}
@@ -164,7 +167,7 @@ export const Pagination = ({ total, theme }) => {
           <option>60</option>
           <option>80</option>
           <option>100</option>
-        </select>
+        </Select>
         <button className={styles['next-pagination__submit']} type='submit'>
           Set page size
         </button>
@@ -181,3 +184,5 @@ Pagination.propTypes = {
 Pagination.defaultProps = {
   total: 0
 }
+
+export default Pagination

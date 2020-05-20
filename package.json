@@ -1,6 +1,6 @@
 {
   "name": "next-pagination",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Pagination component for Next.js apps",
   "author": "etchteam",
   "license": "MIT",
@@ -28,7 +28,6 @@
     "next": "^9.0.0"
   },
   "devDependencies": {
-    "microbundle-crl": "^0.13.8",
     "babel-eslint": "^10.0.3",
     "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
@@ -41,13 +40,17 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-standard": "^4.0.1",
+    "fibers": "3.1.1",
     "gh-pages": "^2.2.0",
+    "microbundle-crl": "^0.13.8",
+    "next": "9.3.5",
+    "node-sass": "4.14.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1",
-    "next": "9.3.5"
+    "sass": "1.26.5"
   },
   "files": [
     "dist"

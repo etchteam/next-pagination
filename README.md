@@ -72,7 +72,7 @@ class Example extends Component {
 }
 ```
 
-The theme uses BEM class naming with the base class `next-pagination`. The file `/src/index.css` should give you a solid idea of what's needed.
+The theme uses BEM class naming with the base class `next-pagination`. The file `/src/index.module.scss` should give you a solid idea of what's needed.
 
 ## Contribute
 
