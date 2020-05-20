@@ -38,6 +38,12 @@ class Example extends Component {
 }
 ```
 
+You will need to import the CSS, either in your `_app.js`, or in your Sass build.
+
+```jsx
+import 'next-pagination/dist/index.css'
+```
+
 When used, the pagination component will reload the same route with added pagination query params.
 
 - `page` for the page number the user is on.

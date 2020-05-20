@@ -60,7 +60,7 @@ const getPageNumbers = ({
   return pageNumbers
 }
 
-export const Pagination = ({ total, theme }) => {
+const Pagination = ({ total, theme }) => {
   const styles = theme || defaultTheme
   const router = useRouter()
   const [hasRouter, setHasRouter] = useState(false)

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Pagination } from 'next-pagination'
+import Pagination from 'next-pagination/dist'
 
 import theme from '../styles/theme.module.scss'
 
@@ -21,6 +21,7 @@ export default function Home() {
         <li><strong>Works with Next.</strong> Integrated with the Next.js router.</li>
       </ul>
 
+      <h2>Default theme</h2>
       <Pagination total={1000} />
 
       <h2>Custom theme</h2>
