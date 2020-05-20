@@ -47,7 +47,7 @@ const getPageNumbers = ({
 
   let pageNumbers = Array.from(Array(endPage + 1 - startPage).keys())
     .map((pageNumber) => startPage + pageNumber)
-    .filter((pageNumber) => pageNumber <= lastPageNumber)
+    .filter((pageNumber) => pageNumber <= lastPageNumber && pageNumber > 0)
 
   console.log(pageNumbers)
 
