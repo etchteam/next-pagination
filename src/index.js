@@ -49,12 +49,27 @@ const getPageNumbers = ({
     .map((pageNumber) => startPage + pageNumber)
     .filter((pageNumber) => pageNumber <= lastPageNumber)
 
+  console.log(pageNumbers)
+
   if (pageNumbers[0] > 1) {
-    pageNumbers = [1, '...', ...pageNumbers]
+    if (pageNumbers[0] <= 2) {
+      pageNumbers = [1, ...pageNumbers]
+    } else {
+      const ellipsis = pageNumbers[0] > 3 ? '...' : 2
+      pageNumbers = [1, ellipsis, ...pageNumbers]
+    }
   }
 
   if (pageNumbers[pageNumbers.length - 1] !== lastPageNumber) {
-    pageNumbers = [...pageNumbers, '...', lastPageNumber]
+    if (pageNumbers[pageNumbers.length - 1] === lastPageNumber - 1) {
+      pageNumbers = [...pageNumbers, lastPageNumber]
+    } else {
+      const ellipsis =
+        pageNumbers[pageNumbers.length - 1] < lastPageNumber - 2
+          ? '...'
+          : lastPageNumber - 1
+      pageNumbers = [...pageNumbers, ellipsis, lastPageNumber]
+    }
   }
 
   return pageNumbers

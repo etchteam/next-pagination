@@ -31,6 +31,7 @@ $next-pagination-select-border-color-hover: $next-pagination-interative-color;
   flex-direction: row-reverse;
   justify-content: space-between;
   line-height: $next-pagination-line-height;
+  user-select: none;
 
   * {
     box-sizing: inherit;
@@ -85,6 +86,7 @@ $next-pagination-select-border-color-hover: $next-pagination-interative-color;
   }
 
   &__link {
+    background: $next-pagination-item-background;
     color: $next-pagination-item-color;
     display: block;
     min-width: 2.5em;
