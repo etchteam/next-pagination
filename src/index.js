@@ -5,6 +5,9 @@ import NextLink from 'next/link'
 import queryString from 'query-string'
 import pickBy from 'lodash/pickBy'
 import isEmpty from 'lodash/isEmpty'
+import isInteger from 'lodash/isInteger'
+import every from 'lodash/every'
+import uniq from 'lodash/uniq'
 
 import List from './components/List'
 import Item from './components/Item'
@@ -73,7 +76,21 @@ const getPageNumbers = ({
   return pageNumbers
 }
 
-const Pagination = ({ total, theme }) => {
+export const getSizes = (customSizes) => {
+  const defaultSizes = [20, 40, 60, 80, 100]
+  // only if customSizes is an array & all values are valid
+  if(Array.isArray(customSizes) && every(customSizes, isInteger)){
+    const uniqSizes = uniq(customSizes).sort()
+    // if the evaluate array is empty, return default
+    // otherwise, return evaluated values
+    if(!uniqSizes.length) return defaultSizes
+    return uniqSizes
+  }
+  // default
+  return defaultSizes
+} 
+
+const Pagination = ({ total, theme, sizes }) => {
   const styles = theme || defaultTheme
   const router = useRouter()
   const [hasRouter, setHasRouter] = useState(false)
@@ -84,7 +101,9 @@ const Pagination = ({ total, theme }) => {
   if (!hasRouter) return null
   const query = pickBy({ ...(router.query || {}) }, (q) => !isEmpty(q))
   const currentPage = Number(query.page || 1)
-  const pageSize = Number(query.size || 20)
+  // default|custom => evaluated sizes
+  const cSizes = getSizes(sizes)
+  const pageSize = Number(query.size) || cSizes[0]
   const isLastPage = currentPage * pageSize >= total
   const pageNumbers = getPageNumbers({ currentPage, pageSize, total })
 
@@ -175,11 +194,7 @@ const Pagination = ({ total, theme }) => {
             router.push(url)
           }}
         >
-          <option>20</option>
-          <option>40</option>
-          <option>60</option>
-          <option>80</option>
-          <option>100</option>
+        { cSizes.map(size => <option key={size}>{size}</option>) }
         </Select>
         <button className={styles['next-pagination__submit']} type='submit'>
           Set page size
