@@ -17,5 +17,7 @@ describe('Custom Sizes', () => {
   it('should return default sizes', () => {
     // will return defaults
     assert.deepStrictEqual(getSizes([]), [20,40,60,80,100])
+    assert.deepStrictEqual(getSizes(["", 10, 20]), [20,40,60,80,100])
+    assert.deepStrictEqual(getSizes([{}, {}]), [20,40,60,80,100])
   })
 })
