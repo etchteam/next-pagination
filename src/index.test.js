@@ -1,4 +1,4 @@
-import { Pagination } from '.'
+import Pagination from '.'
 
 describe('Pagination', () => {
   it('is truthy', () => {
