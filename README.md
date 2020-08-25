@@ -61,6 +61,7 @@ You'll need to load the actual data from your API yourself. We're only here for 
 | ------------------------ | ---------- | ----------------------------------------- |
 | `total`                  | `Number`   | **Required.** The total number of pages.  |
 | `theme`                  | `Object`   | A CSS modules style object.               |
+| `sizes`                  | `Array`    | An array of page size numbers             |
 
 ## Theming
 Next.js natively supports **CSS modules**, so this component supports injecting CSS module styles.

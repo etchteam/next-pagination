@@ -26,6 +26,9 @@ export default function Home() {
 
       <h2>Custom theme</h2>
       <Pagination total={1000} theme={theme} />
+
+      <h2>Custom page sizes</h2>
+      <Pagination total={1000} sizes={[5, 10, 25, 150]} />
     </main>
   );
 }

@@ -5,15 +5,14 @@ import NextLink from 'next/link'
 import queryString from 'query-string'
 import pickBy from 'lodash/pickBy'
 import isEmpty from 'lodash/isEmpty'
-import isInteger from 'lodash/isInteger'
-import every from 'lodash/every'
-import uniq from 'lodash/uniq'
 
 import List from './components/List'
 import Item from './components/Item'
 import Link from './components/Link'
 import Icon from './components/Icon'
 import Select from './components/Select'
+
+import { getSizes } from './lib/sizes'
 
 import defaultTheme from './index.module.scss'
 
@@ -75,20 +74,6 @@ const getPageNumbers = ({
 
   return pageNumbers
 }
-
-export const getSizes = (customSizes) => {
-  const defaultSizes = [20, 40, 60, 80, 100]
-  // only if customSizes is an array & all values are valid
-  if(Array.isArray(customSizes) && every(customSizes, isInteger)){
-    const uniqSizes = uniq(customSizes).sort()
-    // if the evaluate array is empty, return default
-    // otherwise, return evaluated values
-    if(!uniqSizes.length) return defaultSizes
-    return uniqSizes
-  }
-  // default
-  return defaultSizes
-} 
 
 const Pagination = ({ total, theme, sizes }) => {
   const styles = theme || defaultTheme
@@ -194,7 +179,9 @@ const Pagination = ({ total, theme, sizes }) => {
             router.push(url)
           }}
         >
-        { cSizes.map(size => <option key={size}>{size}</option>) }
+          {cSizes.map((size) => (
+            <option key={size}>{size}</option>
+          ))}
         </Select>
         <button className={styles['next-pagination__submit']} type='submit'>
           Set page size
