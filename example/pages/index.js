@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 import Pagination from 'next-pagination/dist'
 
@@ -29,6 +30,13 @@ export default function Home() {
 
       <h2>Custom page sizes</h2>
       <Pagination total={1000} sizes={[5, 10, 25, 150]} />
+
+      <h2>Other examples</h2>
+      <p>
+        <Link href="/dynamic-test">
+          <a>Dynamic pagination</a>
+        </Link>
+      </p>
     </main>
   );
 }
