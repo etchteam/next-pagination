@@ -3,8 +3,8 @@ $next-pagination-interative-color: #72256d;
 $next-pagination-spacing-vertical: 1em;
 $next-pagination-spacing-horizontal: 1em;
 
-$next-pagination-spacing-vertical-sm: $next-pagination-spacing-vertical / 2;
-$next-pagination-spacing-horizontal-sm: $next-pagination-spacing-horizontal / 2;
+$next-pagination-spacing-vertical-sm: $next-pagination-spacing-vertical * 0.5;
+$next-pagination-spacing-horizontal-sm: $next-pagination-spacing-horizontal * 0.5;
 
 $next-pagination-border-width: 1px;
 $next-pagination-border-radius: 4px;
