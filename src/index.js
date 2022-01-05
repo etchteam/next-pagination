@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
 import NextLink from 'next/link'
+import Head from 'next/head'
 import queryString from 'query-string'
 import pickBy from 'lodash/pickBy'
 import isEmpty from 'lodash/isEmpty'
@@ -92,6 +93,8 @@ const Pagination = ({ total, theme, sizes }) => {
   const isLastPage = currentPage * pageSize >= total
   const pageNumbers = getPageNumbers({ currentPage, pageSize, total })
 
+  const path = router.pathname
+
   const url = (page) =>
     `?${queryString.stringify({
       ...query,
@@ -100,6 +103,15 @@ const Pagination = ({ total, theme, sizes }) => {
 
   return (
     <nav className={styles['next-pagination']} aria-label='pagination'>
+      <Head>
+        {/* SEO pagination helpers */}
+        {currentPage !== 1 ? (
+          <link rel='prev' href={`${path}${url(currentPage - 1)}`} />
+        ) : null}
+        {!isLastPage ? (
+          <link rel='next' href={`${path}${url(currentPage + 1)}`} />
+        ) : null}
+      </Head>
       <List theme={styles}>
         <Item theme={styles}>
           {currentPage !== 1 ? (
