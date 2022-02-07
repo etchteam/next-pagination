@@ -2,7 +2,7 @@
 
 > The best damn pagination component. For Next.js
 
-[![NPM](https://img.shields.io/npm/v/next-pagination.svg)](https://www.npmjs.com/package/next-pagination) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/@etchteam/next-pagination.svg)](https://www.npmjs.com/package/@etchteam/next-pagination) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 TL;DR Just show me the [DEMO](https://etchteam.github.io/next-pagination)
 
@@ -20,7 +20,7 @@ TL;DR Just show me the [DEMO](https://etchteam.github.io/next-pagination)
 ## Install
 
 ```bash
-npm install --save next-pagination
+npm install --save @etchteam/next-pagination
 ```
 
 ## Usage
@@ -29,7 +29,7 @@ This component is fairly self contained. You will need to pass the **total numbe
 ```jsx
 import React, { Component } from 'react'
 
-import Pagination from 'next-pagination'
+import Pagination from '@etchteam/next-pagination'
 
 class Example extends Component {
   render() {
@@ -41,7 +41,7 @@ class Example extends Component {
 You will need to import the CSS, either in your `_app.js`, or in your Sass build.
 
 ```jsx
-import 'next-pagination/dist/index.css'
+import '@etchteam/next-pagination/dist/index.css'
 ```
 
 When used, the pagination component will reload the same route with added pagination query params.

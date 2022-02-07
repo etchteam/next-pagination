@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-import Pagination from 'next-pagination/dist'
+import Pagination from '@etchteam/next-pagination/dist'
 
 import theme from '../styles/theme.module.scss'
 
