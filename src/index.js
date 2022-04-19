@@ -78,8 +78,6 @@ const getPageNumbers = ({
 
 const Pagination = ({ total, theme, sizes, perPageText, setPageSizeText }) => {
   const styles = theme || defaultTheme
-  perPageText = perPageText || 'per page'
-  setPageSizeText = setPageSizeText || 'Set page size'
   const router = useRouter()
   const [hasRouter, setHasRouter] = useState(false)
   useEffect(() => {
@@ -207,11 +205,17 @@ const Pagination = ({ total, theme, sizes, perPageText, setPageSizeText }) => {
 
 Pagination.propTypes = {
   total: PropTypes.number.isRequired,
-  theme: PropTypes.object
+  theme: PropTypes.object,
+  perPageText: PropTypes.string,
+  setPageSizeText: PropTypes.string,
+  sizes: PropTypes.arrayOf(PropTypes.number)
 }
 
 Pagination.defaultProps = {
-  total: 0
+  total: 0,
+  perPageText: 'per page',
+  setPageSizeText: 'Set page size',
+  sizes: undefined
 }
 
 export default Pagination
