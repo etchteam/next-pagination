@@ -76,8 +76,10 @@ const getPageNumbers = ({
   return pageNumbers
 }
 
-const Pagination = ({ total, theme, sizes }) => {
+const Pagination = ({ total, theme, sizes, perPageText, setPageSizeText }) => {
   const styles = theme || defaultTheme
+  perPageText = perPageText || 'per page'
+  setPageSizeText = setPageSizeText || 'Set page size'
   const router = useRouter()
   const [hasRouter, setHasRouter] = useState(false)
   useEffect(() => {
@@ -175,7 +177,7 @@ const Pagination = ({ total, theme, sizes }) => {
           htmlFor='next-pagination__size'
           className={styles['next-pagination__label']}
         >
-          per page
+          {perPageText}
         </label>
         <Select
           theme={styles}
@@ -196,7 +198,7 @@ const Pagination = ({ total, theme, sizes }) => {
           ))}
         </Select>
         <button className={styles['next-pagination__submit']} type='submit'>
-          Set page size
+          {setPageSizeText}
         </button>
       </form>
     </nav>
