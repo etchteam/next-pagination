@@ -31,6 +31,13 @@ export default function Home() {
       <h2>Custom page sizes</h2>
       <Pagination total={1000} sizes={[5, 10, 25, 150]} />
 
+      <h2>Custom labels</h2>
+      <Pagination
+        total={1000}
+        perPageText="por página"
+        setPageSizeText="Establecer tamaño de página"
+      />
+
       <h2>Other examples</h2>
       <p>
         <Link href="/[dynamic]" as="/dynamic-test">
