@@ -64,6 +64,7 @@ You'll need to load the actual data from your API yourself. We're only here for 
 | `sizes`                  | `Array`    | An array of page size numbers             |
 | `perPageText`            | `String`   | Label for the page size dropdown          |
 | `setPageSizeText`        | `String`   | Label for the invisible page size button  |
+| `linkProps`              | `Object`   | Extra props to pass to the next.js links  |
 
 ## Theming
 Next.js natively supports **CSS modules**, so this component supports injecting CSS module styles.

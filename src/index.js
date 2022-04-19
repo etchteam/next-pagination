@@ -76,7 +76,7 @@ const getPageNumbers = ({
   return pageNumbers
 }
 
-const Pagination = ({ total, theme, sizes, perPageText, setPageSizeText }) => {
+const Pagination = ({ total, theme, sizes, perPageText, setPageSizeText, linkProps }) => {
   const styles = theme || defaultTheme
   const router = useRouter()
   const [hasRouter, setHasRouter] = useState(false)
@@ -115,7 +115,12 @@ const Pagination = ({ total, theme, sizes, perPageText, setPageSizeText }) => {
       <List theme={styles}>
         <Item theme={styles}>
           {currentPage !== 1 ? (
-            <NextLink href={url(currentPage - 1)} passHref prefetch={false}>
+            <NextLink
+              href={url(currentPage - 1)}
+              passHref
+              prefetch={false}
+              {...linkProps}
+            >
               <Link label='Previous page' theme={styles}>
                 <Icon icon='chevron-left' />
               </Link>
@@ -145,7 +150,12 @@ const Pagination = ({ total, theme, sizes, perPageText, setPageSizeText }) => {
                   {pageNumber}
                 </Link>
               ) : (
-                <NextLink href={url(pageNumber)} passHref prefetch={false}>
+                <NextLink
+                  href={url(pageNumber)}
+                  passHref
+                  prefetch={false}
+                  {...linkProps}
+                >
                   <Link label={`Page ${pageNumber}`} theme={styles}>
                     {pageNumber}
                   </Link>
@@ -156,7 +166,12 @@ const Pagination = ({ total, theme, sizes, perPageText, setPageSizeText }) => {
         )}
         <Item theme={styles}>
           {!isLastPage ? (
-            <NextLink href={url(currentPage + 1)} passHref prefetch={false}>
+            <NextLink
+              href={url(currentPage + 1)}
+              passHref
+              prefetch={false}
+              {...linkProps}
+            >
               <Link label='Next page' theme={styles}>
                 <Icon icon='chevron-right' />
               </Link>
@@ -208,14 +223,16 @@ Pagination.propTypes = {
   theme: PropTypes.object,
   perPageText: PropTypes.string,
   setPageSizeText: PropTypes.string,
-  sizes: PropTypes.arrayOf(PropTypes.number)
+  sizes: PropTypes.arrayOf(PropTypes.number),
+  linkProps: PropTypes.object
 }
 
 Pagination.defaultProps = {
   total: 0,
   perPageText: 'per page',
   setPageSizeText: 'Set page size',
-  sizes: undefined
+  sizes: undefined,
+  linkProps: {}
 }
 
 export default Pagination
