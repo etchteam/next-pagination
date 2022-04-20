@@ -76,7 +76,14 @@ const getPageNumbers = ({
   return pageNumbers
 }
 
-const Pagination = ({ total, theme, sizes, perPageText, setPageSizeText, linkProps }) => {
+const Pagination = ({
+  total,
+  theme,
+  sizes,
+  perPageText,
+  setPageSizeText,
+  linkProps
+}) => {
   const styles = theme || defaultTheme
   const router = useRouter()
   const [hasRouter, setHasRouter] = useState(false)
