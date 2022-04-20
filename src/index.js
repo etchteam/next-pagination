@@ -200,6 +200,7 @@ const Pagination = ({
           {perPageText}
         </label>
         <Select
+          key={pageSize}
           theme={styles}
           name='size'
           id='next-pagination__size'
