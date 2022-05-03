@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { EventHandler, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import NextLink from 'next/link'
 import Head from 'next/head'
@@ -14,66 +13,35 @@ import Icon from './components/Icon'
 import Select from './components/Select'
 
 import { getSizes } from './lib/sizes'
+import { getPageNumbers } from './lib/get-page-numbers'
 
 import defaultTheme from './index.module.scss'
 
-const getPageNumbers = ({
-  currentPage,
-  pageSize,
-  total,
-  pageNumbersToShow = 3
-}) => {
-  const lastPageNumber = Math.ceil(total / pageSize)
-  const currentPageNumber =
-    currentPage <= lastPageNumber ? currentPage : lastPageNumber
-  const maxPagesBeforeCurrentPage = Math.floor(pageNumbersToShow / 2)
-  const maxPagesAfterCurrentPage = Math.ceil(pageNumbersToShow / 2) - 1
-  let startPage = 1
-  let endPage = lastPageNumber
-
-  if (lastPageNumber <= 1) {
-    return [] // Don't show numbers if there's only 1 page
-  }
-
-  if (currentPageNumber <= maxPagesBeforeCurrentPage) {
-    // near the start
-    startPage = 1
-    endPage = pageNumbersToShow
-  } else if (currentPageNumber + maxPagesAfterCurrentPage >= lastPageNumber) {
-    // near the end
-    startPage = lastPageNumber - pageNumbersToShow + 1
-  } else {
-    // somewhere in the middle
-    startPage = currentPageNumber - maxPagesBeforeCurrentPage
-    endPage = currentPageNumber + maxPagesAfterCurrentPage
-  }
-
-  let pageNumbers = Array.from(Array(endPage + 1 - startPage).keys())
-    .map((pageNumber) => startPage + pageNumber)
-    .filter((pageNumber) => pageNumber <= lastPageNumber && pageNumber > 0)
-
-  if (pageNumbers[0] > 1) {
-    if (pageNumbers[0] <= 2) {
-      pageNumbers = [1, ...pageNumbers]
-    } else {
-      const ellipsis = pageNumbers[0] > 3 ? '...' : 2
-      pageNumbers = [1, ellipsis, ...pageNumbers]
-    }
-  }
-
-  if (pageNumbers[pageNumbers.length - 1] !== lastPageNumber) {
-    if (pageNumbers[pageNumbers.length - 1] === lastPageNumber - 1) {
-      pageNumbers = [...pageNumbers, lastPageNumber]
-    } else {
-      const ellipsis =
-        pageNumbers[pageNumbers.length - 1] < lastPageNumber - 2
-          ? '...'
-          : lastPageNumber - 1
-      pageNumbers = [...pageNumbers, ellipsis, lastPageNumber]
-    }
-  }
-
-  return pageNumbers
+interface PaginationProps {
+  /**
+   * The total number of pages
+   */
+  total: number;
+  /**
+   * A CSS modules style object
+   */
+  theme?: { [key: string]: any };
+  /**
+   * An array of page size numbers
+   */
+  sizes?: number[];
+  /**
+   * Label for the page size dropdown
+   */
+  perPageText?: string;
+  /**
+   * Label for the invisible page size button
+   */
+  setPageSizeText?: string;
+  /**
+   * Extra props to pass to the next.js links
+   */
+  linkProps?: { [key: string]: any };
 }
 
 const Pagination = ({
@@ -83,7 +51,7 @@ const Pagination = ({
   perPageText,
   setPageSizeText,
   linkProps
-}) => {
+}: PaginationProps) => {
   const styles = theme || defaultTheme
   const router = useRouter()
   const [hasRouter, setHasRouter] = useState(false)
@@ -102,7 +70,7 @@ const Pagination = ({
 
   const path = router.pathname
 
-  const url = (page) =>
+  const url = (page: number | string) =>
     `?${queryString.stringify({
       ...query,
       page
@@ -205,11 +173,11 @@ const Pagination = ({
           name='size'
           id='next-pagination__size'
           defaultValue={pageSize}
-          onChange={(e) => {
+          onChange={(event: Event) => {
             const url = `${router.pathname}?${queryString.stringify({
               ...query,
               page: 1,
-              size: e.target.value
+              size: (event.target as HTMLSelectElement).value
             })}`
             router.push(url)
           }}
@@ -224,15 +192,6 @@ const Pagination = ({
       </form>
     </nav>
   )
-}
-
-Pagination.propTypes = {
-  total: PropTypes.number.isRequired,
-  theme: PropTypes.object,
-  perPageText: PropTypes.string,
-  setPageSizeText: PropTypes.string,
-  sizes: PropTypes.arrayOf(PropTypes.number),
-  linkProps: PropTypes.object
 }
 
 Pagination.defaultProps = {

@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 
 // Icons from: https://material.io/resources/icons/?style=round
 
-function path(icon) {
+type IconName = 'chevron-left' | 'chevron-right' | 'expand-more';
+
+function path(icon: IconName) {
   switch (icon) {
     case 'chevron-left':
       return (
@@ -40,7 +42,7 @@ function path(icon) {
   }
 }
 
-export default function Icon({ icon }) {
+export default function Icon({ icon }: { icon: IconName }) {
   return (
     <svg
       className='next-pagination__icon'
