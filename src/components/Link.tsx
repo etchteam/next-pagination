@@ -1,8 +1,16 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-export default class Link extends React.Component {
+interface LinkProps {
+  children: React.ReactNode;
+  label: string;
+  theme: { [key: string]: any };
+  current?: boolean;
+  disabled?: boolean;
+  [key: string]: any;
+}
+
+export default class Link extends React.Component<LinkProps> {
   render() {
     const { children, current, disabled, label, theme, ...props } = this.props
     const cx = classNames(theme['next-pagination__link'], {
@@ -16,12 +24,4 @@ export default class Link extends React.Component {
       </a>
     )
   }
-}
-
-Link.propTypes = {
-  children: PropTypes.node.isRequired,
-  current: PropTypes.bool,
-  disabled: PropTypes.bool,
-  label: PropTypes.string.isRequired,
-  theme: PropTypes.object.isRequired
 }
