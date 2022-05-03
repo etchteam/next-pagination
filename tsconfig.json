@@ -20,9 +20,7 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "typeRoots": [
-      "../../node_modules/@types"
-    ]
+    "types": ["jest", "node"]
   },
   "exclude": [
     "node_modules"
