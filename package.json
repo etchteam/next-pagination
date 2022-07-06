@@ -1,6 +1,6 @@
 {
   "name": "@etchteam/next-pagination",
-  "version": "3.5.3",
+  "version": "3.5.4",
   "description": "Pagination component for Next.js apps",
   "author": "etchteam",
   "license": "MIT",
