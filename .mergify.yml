@@ -13,7 +13,7 @@ pull_request_rules:
       - and:
         - author~=!^dependabot(|-preview)\[bot\]$
         - label!=wontfix
-        - check-success=Travis CI - Branch
+        - check-success=build
         - check-success=SonarCloud Code Analysis 
         - "#approved-reviews-by>=1"
     actions:
@@ -23,7 +23,7 @@ pull_request_rules:
     conditions:
       - author~=^dependabot(|-preview)\[bot\]$
       - label!=wontfix
-      - check-success=Travis CI - Branch
+      - check-success=build
       - check-success=SonarCloud Code Analysis 
     actions:
       merge:
