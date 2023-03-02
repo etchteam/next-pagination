@@ -2,12 +2,12 @@ import React from 'react'
 import classNames from 'classnames'
 
 interface LinkProps {
-  children: React.ReactNode;
-  label: string;
-  theme: { [key: string]: any };
-  current?: boolean;
-  disabled?: boolean;
-  [key: string]: any;
+  children: React.ReactNode
+  label: string
+  theme: { [key: string]: any }
+  current?: boolean
+  disabled?: boolean
+  [key: string]: any
 }
 
 export default class Link extends React.Component<LinkProps> {

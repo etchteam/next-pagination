@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 // Icons from: https://material.io/resources/icons/?style=round
 
-type IconName = 'chevron-left' | 'chevron-right' | 'expand-more';
+type IconName = 'chevron-left' | 'chevron-right' | 'expand-more'
 
 function path(icon: IconName) {
   switch (icon) {

@@ -16,9 +16,6 @@
     "build": "next build && next export -o build",
     "start": "next start"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": [
     ">0.2%",
     "not dead",

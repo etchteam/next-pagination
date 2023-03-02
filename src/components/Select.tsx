@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import Icon from './Icon'
 
 interface SelectProps {
-  children: React.ReactNode;
-  theme: { [key: string]: any };
-  [key: string]: any;
+  children: React.ReactNode
+  theme: { [key: string]: any }
+  [key: string]: any
 }
 
 const Select = ({ children, theme, ...props }: SelectProps) => (
