@@ -21,27 +21,27 @@ interface PaginationProps {
   /**
    * The total number of pages
    */
-  total: number;
+  total: number
   /**
    * A CSS modules style object
    */
-  theme?: { [key: string]: any };
+  theme?: { [key: string]: any }
   /**
    * An array of page size numbers
    */
-  sizes?: number[];
+  sizes?: number[]
   /**
    * Label for the page size dropdown
    */
-  perPageText?: string;
+  perPageText?: string
   /**
    * Label for the invisible page size button
    */
-  setPageSizeText?: string;
+  setPageSizeText?: string
   /**
    * Extra props to pass to the next.js links
    */
-  linkProps?: { [key: string]: any };
+  linkProps?: { [key: string]: any }
 }
 
 const Pagination = ({
@@ -92,8 +92,9 @@ const Pagination = ({
           {currentPage !== 1 ? (
             <NextLink
               href={url(currentPage - 1)}
-              passHref
               prefetch={false}
+              passHref
+              legacyBehavior
               {...linkProps}
             >
               <Link label='Previous page' theme={styles}>
@@ -127,8 +128,9 @@ const Pagination = ({
               ) : (
                 <NextLink
                   href={url(pageNumber)}
-                  passHref
                   prefetch={false}
+                  passHref
+                  legacyBehavior
                   {...linkProps}
                 >
                   <Link label={`Page ${pageNumber}`} theme={styles}>
@@ -143,8 +145,9 @@ const Pagination = ({
           {!isLastPage ? (
             <NextLink
               href={url(currentPage + 1)}
-              passHref
               prefetch={false}
+              passHref
+              legacyBehavior
               {...linkProps}
             >
               <Link label='Next page' theme={styles}>

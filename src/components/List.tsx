@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 interface ListProps {
-  children: React.ReactNode;
-  theme: { [key: string]: any };
+  children: React.ReactNode
+  theme: { [key: string]: any }
 }
 
 export default function List({ children, theme }: ListProps) {

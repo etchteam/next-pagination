@@ -1,8 +1,8 @@
 interface GetPageNumbersArgs {
-  currentPage: number;
-  pageSize: number;
-  total: number;
-  pageNumbersToShow?: number;
+  currentPage: number
+  pageSize: number
+  total: number
+  pageNumbersToShow?: number
 }
 
 export const getPageNumbers = ({
@@ -36,7 +36,9 @@ export const getPageNumbers = ({
     endPage = currentPageNumber + maxPagesAfterCurrentPage
   }
 
-  let pageNumbers: (string | number)[] = Array.from(Array(endPage + 1 - startPage).keys())
+  let pageNumbers: (string | number)[] = Array.from(
+    Array(endPage + 1 - startPage).keys()
+  )
     .map((pageNumber) => startPage + pageNumber)
     .filter((pageNumber) => pageNumber <= lastPageNumber && pageNumber > 0)
 
