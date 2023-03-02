@@ -41,7 +41,7 @@ export default function Home() {
       <h2>Other examples</h2>
       <p>
         <Link href="[dynamic]" as="dynamic-test">
-          <a>Dynamic pagination</a>
+          Dynamic pagination
         </Link>
       </p>
     </main>
