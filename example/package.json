@@ -7,7 +7,7 @@
     "@zeit/next-source-maps": "0.0.4-canary.1",
     "next": "^13.2.3",
     "@etchteam/next-pagination": "file:..",
-    "node-sass": "7.0.0",
+    "node-sass": "7.0.3",
     "react": "file:../node_modules/react",
     "react-dom": "file:../node_modules/react-dom"
   },
