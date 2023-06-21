@@ -56,6 +56,9 @@ export default function Home() {
         setPageSizeText='Establecer tamaño de página'
       />
 
+      <h2>Disable per page</h2>
+      <Pagination total={1000} disablePerPage={true} perPageText='por página' />
+
       <h2>Other examples</h2>
       <p>
         <Link href='[dynamic]' as='dynamic-test'>

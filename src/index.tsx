@@ -35,6 +35,10 @@ interface PaginationProps {
    */
   perPageText?: string
   /**
+   * The current page number of the pagination component
+   * */
+  disablePerPage?: boolean
+  /**
    * Label for the invisible page size button
    */
   setPageSizeText?: string
@@ -49,6 +53,7 @@ const Pagination = ({
   theme,
   sizes,
   perPageText,
+  disablePerPage,
   setPageSizeText,
   linkProps
 }: PaginationProps) => {
@@ -176,6 +181,7 @@ const Pagination = ({
           name='size'
           id='next-pagination__size'
           defaultValue={pageSize}
+          disabled={disablePerPage}
           onChange={(event: Event) => {
             const url = `${router.pathname}?${queryString.stringify({
               ...query,
