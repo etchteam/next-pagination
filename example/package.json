@@ -5,7 +5,7 @@
   "private": true,
   "dependencies": {
     "@zeit/next-source-maps": "0.0.4-canary.1",
-    "next": "^13.4.9",
+    "next": "^13.5.4",
     "@etchteam/next-pagination": "file:..",
     "node-sass": "9.0.0",
     "react": "file:../node_modules/react",
