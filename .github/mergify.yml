@@ -1,0 +1,25 @@
+pull_request_rules:
+  - name: Automerge when checks pass and reviews are approved
+    conditions:
+      - and:
+        - author~=!^dependabot(|-preview)\[bot\]$
+        - label!=wontfix
+        - check-success=build
+        - check-success=test
+        - check-success=megalinter
+        - check-success=SonarCloud Code Analysis
+        - "#approved-reviews-by>=1"
+    actions:
+      merge:
+        method: merge
+  - name: Automerge security updates when checks pass
+    conditions:
+      - author~=^dependabot(|-preview)\[bot\]$
+      - label!=wontfix
+      - check-success=build
+      - check-success=test
+      - check-success=megalinter
+      - check-success=SonarCloud Code Analysis
+    actions:
+      merge:
+        method: merge
