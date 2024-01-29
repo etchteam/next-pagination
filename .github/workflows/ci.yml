@@ -1,19 +1,30 @@
+---
 name: CI
-
 on:
-  push:
   pull_request:
-
+    branches:
+      - master
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version-file: .nvmrc
+        cache: 'npm'
+    - run: npm ci
+    - run: npm test
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup node
-      uses: actions/setup-node@v3
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
       with:
-        node-version: 16.18.1
+        node-version-file: .nvmrc
         cache: 'npm'
-    - run: npm ci --no-audit --prefer-offline
+    - run: npm ci
     - run: npm run build
-    - run: npm test
