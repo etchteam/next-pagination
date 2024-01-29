@@ -27,7 +27,7 @@ npm install --save @etchteam/next-pagination
 This component is fairly self contained. You will need to pass the **total number of potential results** in order to calculate the number of pages to show.
 
 ```jsx
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 import Pagination from '@etchteam/next-pagination'
 
