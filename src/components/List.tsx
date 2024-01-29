@@ -1,11 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
 
 interface ListProps {
-  children: React.ReactNode
-  theme: { [key: string]: any }
+  readonly children: React.ReactNode;
+  readonly theme: { [key: string]: any };
 }
 
 export default function List({ children, theme }: ListProps) {
-  return <ul className={theme['next-pagination__list']}>{children}</ul>
+  return <ul className={theme['next-pagination__list']}>{children}</ul>;
 }

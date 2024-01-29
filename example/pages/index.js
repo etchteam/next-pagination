@@ -1,9 +1,8 @@
-import React from 'react'
-import Link from 'next/link'
+import Pagination from '@etchteam/next-pagination/dist';
+import Link from 'next/link';
+import React from 'react';
 
-import Pagination from '@etchteam/next-pagination/dist'
-
-import theme from '../styles/theme.module.scss'
+import theme from '../styles/theme.module.scss';
 
 export default function Home() {
   return (
@@ -52,16 +51,16 @@ export default function Home() {
       <h2>Custom labels</h2>
       <Pagination
         total={1000}
-        perPageText='por página'
-        setPageSizeText='Establecer tamaño de página'
+        perPageText="por página"
+        setPageSizeText="Establecer tamaño de página"
       />
 
       <h2>Other examples</h2>
       <p>
-        <Link href='[dynamic]' as='dynamic-test'>
+        <Link href="[dynamic]" as="dynamic-test">
           Dynamic pagination
         </Link>
       </p>
     </main>
-  )
+  );
 }
