@@ -1,0 +1,5 @@
+migration
+node_modules
+*.*
+!*.css
+!*.scss
