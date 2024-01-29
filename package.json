@@ -9,7 +9,7 @@
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
   "engines": {
-    "node": ">=10"
+    "node": "^18 || ^20"
   },
   "scripts": {
     "build": "microbundle-crl --no-compress --format modern,cjs",
@@ -47,7 +47,6 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.17.0",
-    "fibers": "5.0.0",
     "gh-pages": "^2.2.0",
     "microbundle-crl": "^0.13.8",
     "next": "^13.2.3",
