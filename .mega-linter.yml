@@ -17,6 +17,8 @@ APPLY_FIXES: none
 DISABLE:
   - COPYPASTE
   - SPELL
+
+DISABLE_LINTERS:
   # Disable standard style linters in favour of eslint
   - JAVASCRIPT_STANDARD
   - TYPESCRIPT_STANDARD
