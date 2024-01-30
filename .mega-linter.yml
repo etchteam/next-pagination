@@ -19,13 +19,17 @@ DISABLE:
   - SPELL
 
 DISABLE_LINTERS:
+  # Disable scss-lint in favour of stylelint
+  - CSS_SCSS_LINT
   # Disable standard style linters in favour of eslint
   - JAVASCRIPT_STANDARD
   - TYPESCRIPT_STANDARD
   # Not needed in this repository
   - REPOSITORY_TRIVY
-  # Disable scss-lint in favour of stylelint
-  - CSS_SCSS_LINT
+  # We have secret scanning enabled and set to block pushes with secrets
+  - REPOSITORY_GITLEAKS
+    # We use dependabot for vulnerability monitoring and patching
+  - REPOSITORY_GRYPE
 
 SHOW_ELAPSED_TIME: true
 
