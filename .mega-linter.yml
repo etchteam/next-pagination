@@ -33,3 +33,7 @@ FILEIO_REPORTER: false
 
 # Uncomment if you want MegaLinter to detect errors but not block CI to pass
 # DISABLE_ERRORS: true
+
+# Config paths
+CSS_STYLELINT_CONFIG_FILE: stylelint.config.js
+JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.js
