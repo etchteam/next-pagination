@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface ItemProps {
   readonly children: React.ReactNode;
   readonly theme: { [key: string]: string | undefined };
