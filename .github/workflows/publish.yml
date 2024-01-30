@@ -3,7 +3,7 @@ name: 🚀 Publish
 on:
   push:
     branches:
-    - main
+      - main
 env:
   HUSKY: 0
 jobs:
