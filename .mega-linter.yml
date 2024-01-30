@@ -17,6 +17,9 @@ APPLY_FIXES: none
 DISABLE:
   - COPYPASTE # Comment to enable checks of excessive copy-pastes
   - SPELL # Comment to enable checks of spelling mistakes
+  # Disable standard style linters
+  - JAVASCRIPT_STANDARD
+  - TYPESCRIPT_STANDARD
 
 SHOW_ELAPSED_TIME: true
 
