@@ -1,4 +1,3 @@
-import { string } from 'prop-types';
 import { Fragment } from 'react';
 
 // Icons from: https://material.io/resources/icons/?style=round
@@ -55,7 +54,3 @@ export default function Icon({ icon }: Readonly<{ icon: IconName }>) {
     </svg>
   );
 }
-
-Icon.propTypes = {
-  icon: string.isRequired,
-};
