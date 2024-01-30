@@ -15,11 +15,15 @@ APPLY_FIXES: none
 # ENABLE_LINTERS:
 
 DISABLE:
-  - COPYPASTE # Comment to enable checks of excessive copy-pastes
-  - SPELL # Comment to enable checks of spelling mistakes
-  # Disable standard style linters
+  - COPYPASTE
+  - SPELL
+  # Disable standard style linters in favour of eslint
   - JAVASCRIPT_STANDARD
   - TYPESCRIPT_STANDARD
+  # Not needed in this repository
+  - REPOSITORY_TRIVY
+  # Disable scss-lint in favour of stylelint
+  - CSS_SCSS_LINT
 
 SHOW_ELAPSED_TIME: true
 
