@@ -1,8 +1,6 @@
-import React from 'react';
-
 interface ListProps {
   readonly children: React.ReactNode;
-  readonly theme: { [key: string]: any };
+  readonly theme: { [key: string]: string | undefined };
 }
 
 export default function List({ children, theme }: ListProps) {

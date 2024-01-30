@@ -1,11 +1,9 @@
-import React from 'react';
-
 import Icon from './Icon';
 
 interface SelectProps {
   readonly children: React.ReactNode;
-  readonly theme: { [key: string]: any };
-  [key: string]: any;
+  readonly theme: { [key: string]: string | undefined };
+  [key: string]: unknown;
 }
 
 const Select = ({ children, theme, ...props }: SelectProps) => (

@@ -3,8 +3,8 @@ import pickBy from 'lodash/pickBy';
 import Head from 'next/head';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import queryString from 'query-string';
-import React, { useEffect, useState } from 'react';
+import { stringify } from 'query-string';
+import { useEffect, useState } from 'react';
 
 import Icon from './components/Icon';
 import Item from './components/Item';
@@ -19,11 +19,11 @@ interface PaginationProps {
   /**
    * The total number of pages
    */
-  readonly total: number;
+  readonly total?: number;
   /**
    * A CSS modules style object
    */
-  readonly theme?: { [key: string]: any };
+  readonly theme?: { [key: string]: unknown };
   /**
    * An array of page size numbers
    */
@@ -39,18 +39,18 @@ interface PaginationProps {
   /**
    * Extra props to pass to the next.js links
    */
-  readonly linkProps?: { [key: string]: any };
+  readonly linkProps?: { [key: string]: unknown };
 }
 
 const Pagination = ({
-  total,
+  total = 0,
   theme,
   sizes,
   perPageText,
   setPageSizeText,
   linkProps,
 }: PaginationProps) => {
-  const styles = theme || defaultTheme;
+  const styles = theme ?? defaultTheme;
   const router = useRouter();
   const [hasRouter, setHasRouter] = useState(false);
   useEffect(() => {
@@ -59,7 +59,7 @@ const Pagination = ({
 
   if (!hasRouter) return null;
   const query = pickBy({ ...(router.query || {}) }, (q) => !isEmpty(q));
-  const currentPage = Number(query.page || 1);
+  const currentPage = Number(query.page ?? 1);
   // default|custom => evaluated sizes
   const cSizes = getSizes(sizes);
   const pageSize = Number(query.size) || cSizes[0];
@@ -69,7 +69,7 @@ const Pagination = ({
   const path = router.pathname;
 
   const url = (page: number | string) =>
-    `?${queryString.stringify({
+    `?${stringify({
       ...query,
       page,
     })}`;
@@ -175,7 +175,7 @@ const Pagination = ({
           id="next-pagination__size"
           defaultValue={pageSize}
           onChange={(event: Event) => {
-            const url = `${router.pathname}?${queryString.stringify({
+            const url = `${router.pathname}?${stringify({
               ...query,
               page: 1,
               size: (event.target as HTMLSelectElement).value,

@@ -31,8 +31,8 @@ export default function Home() {
           <strong>Themeable.</strong> Make it look however you want.
         </li>
         <li>
-          <strong>Self contained.</strong> There's only one required prop to get
-          going. The rest of the logic is handled for you.
+          <strong>Self contained.</strong> There&rsquo;s only one required prop
+          to get going. The rest of the logic is handled for you.
         </li>
         <li>
           <strong>Works with Next.</strong> Integrated with the Next.js router.
