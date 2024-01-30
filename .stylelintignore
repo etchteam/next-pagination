@@ -1,4 +1,4 @@
-migration
+dist
 node_modules
 *.*
 !*.css
