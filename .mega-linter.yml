@@ -40,7 +40,7 @@ FILEIO_REPORTER: false
 
 # Config paths
 CSS_STYLELINT_CONFIG_FILE: stylelint.config.js
-JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.js
+JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.json
 
 # Override linter executables
 CSS_STYLELINT_CLI_EXECUTABLE: ['./node_modules/.bin/stylelint']
