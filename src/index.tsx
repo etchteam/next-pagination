@@ -1,19 +1,19 @@
-import isEmpty from 'lodash/isEmpty';
-import pickBy from 'lodash/pickBy';
-import Head from 'next/head';
-import NextLink from 'next/link';
-import { useRouter } from 'next/router';
+import isEmpty from 'lodash/isEmpty.js';
+import pickBy from 'lodash/pickBy.js';
+import Head from 'next/head.js';
+import NextLink from 'next/link.js';
+import { useRouter } from 'next/router.js';
 import { stringify } from 'query-string';
 import { useEffect, useState } from 'react';
 
-import Icon from './components/Icon';
-import Item from './components/Item';
-import Link from './components/Link';
-import List from './components/List';
-import Select from './components/Select';
+import Icon from './components/Icon.jsx';
+import Item from './components/Item.jsx';
+import Link from './components/Link.jsx';
+import List from './components/List.jsx';
+import Select from './components/Select.jsx';
 import defaultTheme from './index.module.scss';
-import { getPageNumbers } from './lib/get-page-numbers';
-import { getSizes } from './lib/sizes';
+import { getPageNumbers } from './lib/get-page-numbers.js';
+import { getSizes } from './lib/sizes.js';
 
 interface PaginationProps {
   /**

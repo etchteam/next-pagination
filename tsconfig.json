@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
-    "target": "es2016",
+    "target": "ES5",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "jsx": "preserve",
     "jsxFactory": "React.createElement",
     "jsxFragmentFactory": "React.Fragment",
-    "module": "commonjs",
+    "module": "Node16",
+    "moduleResolution": "Node16",
     "baseUrl": "./src",
-    "types": ["./src/declarations.d.ts"],
+    "types": ["./src/declarations.d.ts", "jest"],
     "noEmit": true,
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,

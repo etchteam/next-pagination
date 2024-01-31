@@ -1,6 +1,6 @@
-import every from 'lodash/every';
-import isInteger from 'lodash/isInteger';
-import uniq from 'lodash/uniq';
+import every from 'lodash/every.js';
+import isInteger from 'lodash/isInteger.js';
+import uniq from 'lodash/uniq.js';
 
 export const getSizes = (customSizes?: number[]) => {
   const defaultSizes = [20, 40, 60, 80, 100];

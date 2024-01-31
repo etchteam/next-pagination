@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import assert from 'assert';
 
-import { getSizes } from './lib/sizes';
-
-import Pagination from '.';
+import Pagination from './index.jsx';
+import { getSizes } from './lib/sizes.js';
 
 describe('Pagination', () => {
   it('is truthy', () => {
