@@ -42,7 +42,7 @@ export const getPageNumbers = ({
     .map((pageNumber) => startPage + pageNumber)
     .filter((pageNumber) => pageNumber <= lastPageNumber && pageNumber > 0);
 
-  if (pageNumbers[0] > 1) {
+  if (typeof pageNumbers[0] === 'number' && pageNumbers[0] > 1) {
     if (pageNumbers[0] <= 2) {
       pageNumbers = [1, ...pageNumbers];
     } else {
@@ -51,12 +51,15 @@ export const getPageNumbers = ({
     }
   }
 
-  if (pageNumbers[pageNumbers.length - 1] !== lastPageNumber) {
-    if (pageNumbers[pageNumbers.length - 1] === lastPageNumber - 1) {
+  const lastNumberInArray = pageNumbers[pageNumbers.length - 1];
+
+  if (lastNumberInArray !== lastPageNumber) {
+    if (lastNumberInArray === lastPageNumber - 1) {
       pageNumbers = [...pageNumbers, lastPageNumber];
     } else {
       const ellipsis =
-        pageNumbers[pageNumbers.length - 1] < lastPageNumber - 2
+        typeof lastNumberInArray === 'number' &&
+        lastNumberInArray < lastPageNumber - 2
           ? '...'
           : lastPageNumber - 1;
       pageNumbers = [...pageNumbers, ellipsis, lastPageNumber];
