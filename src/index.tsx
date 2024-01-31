@@ -1,7 +1,7 @@
 import isEmpty from 'lodash/isEmpty.js';
 import pickBy from 'lodash/pickBy.js';
-import Head from 'next/head.js';
-import NextLink from 'next/link.js';
+import BaseHead from 'next/head.js';
+import BaseNextLink from 'next/link.js';
 import { useRouter } from 'next/router.js';
 import { stringify } from 'query-string';
 import { useEffect, useState } from 'react';
@@ -14,6 +14,9 @@ import Select from './components/Select.jsx';
 import defaultTheme from './index.module.scss';
 import { getPageNumbers } from './lib/get-page-numbers.js';
 import { getSizes } from './lib/sizes.js';
+
+const NextLink = BaseNextLink as unknown as typeof BaseNextLink.default;
+const Head = BaseHead as unknown as typeof BaseHead.default;
 
 interface PaginationProps {
   /**
