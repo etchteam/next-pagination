@@ -1,4 +1,4 @@
-import Pagination from '@etchteam/next-pagination/dist';
+import Pagination from '@etchteam/next-pagination/dist/index.cjs';
 import React from 'react';
 
 export default function Dynamic() {
