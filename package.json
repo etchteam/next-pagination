@@ -1,19 +1,20 @@
 {
+  "type": "module",
   "name": "@etchteam/next-pagination",
   "version": "3.5.5",
   "description": "Pagination component for Next.js apps",
   "author": "etchteam",
   "license": "MIT",
   "repository": "etchteam/next-pagination",
-  "main": "dist/index.js",
-  "module": "dist/index.modern.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
   "source": "src/index.tsx",
   "engines": {
     "node": "^18 || ^20"
   },
   "scripts": {
-    "build": "microbundle-crl --no-compress --format modern,cjs,module",
-    "start": "microbundle-crl watch --no-compress --format modern,cjs,module",
+    "build": "microbundle --jsx=React.createElement --generateTypes=true --no-compress",
+    "start": "microbundle watch --jsx=React.createElement --generateTypes=true --no-compress",
     "prepare": "husky install",
     "test": "run-s test:types test:unit test:build",
     "test:build": "run-s build",
@@ -48,7 +49,7 @@
     "gh-pages": "^2.2.0",
     "husky": "^9.0.7",
     "lint-staged": "^15.2.0",
-    "microbundle-crl": "^0.13.8",
+    "microbundle": "^0.15.1",
     "next": "^13.2.3",
     "node-sass": "9.0.0",
     "npm-run-all": "^4.1.5",
@@ -59,7 +60,7 @@
     "sass": "1.26.5",
     "semantic-release": "^23.0.0",
     "stylelint": "^15.11.0",
-    "typescript": "^4.6.4"
+    "typescript": "^5.3.3"
   },
   "files": [
     "dist"
