@@ -1,9 +1,8 @@
-import React from 'react'
-import Link from 'next/link'
+import Pagination from '@etchteam/next-pagination/dist/index.cjs';
+import Link from 'next/link';
+import React from 'react';
 
-import Pagination from '@etchteam/next-pagination/dist'
-
-import theme from '../styles/theme.module.scss'
+import theme from '../styles/theme.module.scss';
 
 export default function Home() {
   return (
@@ -32,8 +31,8 @@ export default function Home() {
           <strong>Themeable.</strong> Make it look however you want.
         </li>
         <li>
-          <strong>Self contained.</strong> There's only one required prop to get
-          going. The rest of the logic is handled for you.
+          <strong>Self contained.</strong> There&rsquo;s only one required prop
+          to get going. The rest of the logic is handled for you.
         </li>
         <li>
           <strong>Works with Next.</strong> Integrated with the Next.js router.
@@ -52,16 +51,16 @@ export default function Home() {
       <h2>Custom labels</h2>
       <Pagination
         total={1000}
-        perPageText='por página'
-        setPageSizeText='Establecer tamaño de página'
+        perPageText="por página"
+        setPageSizeText="Establecer tamaño de página"
       />
 
       <h2>Other examples</h2>
       <p>
-        <Link href='[dynamic]' as='dynamic-test'>
+        <Link href="[dynamic]" as="dynamic-test">
           Dynamic pagination
         </Link>
       </p>
     </main>
-  )
+  );
 }

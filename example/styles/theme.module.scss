@@ -45,7 +45,8 @@ $next-pagination-select-border-color-hover: $next-pagination-interative-color;
   }
 
   &__item {
-    border: $next-pagination-border-width solid $next-pagination-item-border-color;
+    border: $next-pagination-border-width solid
+      $next-pagination-item-border-color;
     border-left-color: transparent;
     display: none;
     margin-right: -$next-pagination-border-width;
@@ -61,26 +62,31 @@ $next-pagination-select-border-color-hover: $next-pagination-interative-color;
 
     &:first-child {
       border-left-color: $next-pagination-item-border-color;
-      border-radius: $next-pagination-border-radius 0 0 $next-pagination-border-radius;
+      border-radius: $next-pagination-border-radius 0 0
+        $next-pagination-border-radius;
 
       .next-pagination__link {
-        border-radius: $next-pagination-border-radius 0 0 $next-pagination-border-radius;
+        border-radius: $next-pagination-border-radius 0 0
+          $next-pagination-border-radius;
       }
     }
 
     &:last-child {
-      border-radius: 0 $next-pagination-border-radius $next-pagination-border-radius 0;
+      border-radius: 0 $next-pagination-border-radius
+        $next-pagination-border-radius 0;
       border-right-width: $next-pagination-border-width;
       margin-right: 0;
 
       .next-pagination__link {
-        border-radius: 0 $next-pagination-border-radius $next-pagination-border-radius 0;
+        border-radius: 0 $next-pagination-border-radius
+          $next-pagination-border-radius 0;
       }
     }
 
     &--hellip {
       min-width: 2.5em;
-      padding: $next-pagination-spacing-vertical-sm $next-pagination-spacing-horizontal-sm;
+      padding: $next-pagination-spacing-vertical-sm
+        $next-pagination-spacing-horizontal-sm;
       text-align: center;
     }
   }
@@ -91,10 +97,11 @@ $next-pagination-select-border-color-hover: $next-pagination-interative-color;
     display: block;
     min-width: 2.5em;
     outline: $next-pagination-border-width solid transparent;
-    padding: $next-pagination-spacing-vertical-sm $next-pagination-spacing-horizontal-sm;
+    padding: $next-pagination-spacing-vertical-sm
+      $next-pagination-spacing-horizontal-sm;
     text-align: center;
     text-decoration: none;
-    transition: outline-color .2s ease-in-out;
+    transition: outline-color 0.2s ease-in-out;
 
     &:hover,
     &:focus {
@@ -133,7 +140,8 @@ $next-pagination-select-border-color-hover: $next-pagination-interative-color;
 
   &__select {
     background-color: $next-pagination-select-background;
-    border: $next-pagination-border-width solid $next-pagination-select-border-color;
+    border: $next-pagination-border-width solid
+      $next-pagination-select-border-color;
     border-radius: $next-pagination-border-radius;
     color: inherit;
     display: block;
@@ -141,7 +149,7 @@ $next-pagination-select-border-color-hover: $next-pagination-interative-color;
     line-height: $next-pagination-line-height;
     position: relative;
     text-overflow: ellipsis;
-    transition: border-color .2s ease-in-out;
+    transition: border-color 0.2s ease-in-out;
     width: 100%;
 
     &:focus-within,
@@ -155,14 +163,18 @@ $next-pagination-select-border-color-hover: $next-pagination-interative-color;
       background: transparent;
       border: 0 none;
       display: block;
-      height: calc(#{$next-pagination-spacing-vertical-sm * 2} + #{$next-pagination-line-height} + #{$next-pagination-border-width * 2});
       font-size: 1em;
+      height: calc(
+        #{$next-pagination-spacing-vertical-sm * 2} + #{$next-pagination-line-height} +
+          #{$next-pagination-border-width * 2}
+      );
       line-height: $next-pagination-line-height;
-      padding: $next-pagination-spacing-vertical-sm $next-pagination-spacing-horizontal-sm;
+      padding: $next-pagination-spacing-vertical-sm
+        $next-pagination-spacing-horizontal-sm;
       padding-right: 2.5em;
       text-indent: $next-pagination-spacing-horizontal-sm;
       text-overflow: ellipsis;
-      transition: border-color .2s ease-in-out;
+      transition: border-color 0.2s ease-in-out;
       width: 100%;
       z-index: 1;
 
@@ -176,11 +188,11 @@ $next-pagination-select-border-color-hover: $next-pagination-interative-color;
     }
 
     &-suffix {
+      height: 100%;
+      pointer-events: none;
       position: absolute;
       right: 0;
       top: 0;
-      height: 100%;
-      pointer-events: none;
       width: 2em;
 
       svg {
@@ -208,4 +220,3 @@ $next-pagination-select-border-color-hover: $next-pagination-interative-color;
     width: 1px;
   }
 }
-

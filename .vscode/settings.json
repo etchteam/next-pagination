@@ -1,0 +1,11 @@
+{
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
+  },
+  "sonarlint.connectedMode.project": {
+    "connectionId": "etchteam",
+    "projectKey": "etchteam_next-pagination"
+  }
+}
