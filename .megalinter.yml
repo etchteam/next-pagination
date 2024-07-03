@@ -1,0 +1,42 @@
+# Configuration file for MegaLinter
+#
+# See all available variables at https://megalinter.io/latest/config-file/ and in
+# linters documentation
+---
+APPLY_FIXES: none
+
+DISABLE:
+  - COPYPASTE
+  - SPELL
+
+DISABLE_LINTERS:
+  # We use stylelint for CSS and SCSS linting
+  - CSS_SCSS_LINT
+  # Disable in favour of eslint
+  - JAVASCRIPT_STANDARD
+  # We use dependabot for vulnerability monitoring and patching
+  - REPOSITORY_GRYPE
+  # Not needed in this repository
+  - REPOSITORY_TRIVY
+  # Disable in favour of eslint
+  - TYPESCRIPT_STANDARD
+  # Link check flags localhost links in the contributing docs
+  - MARKDOWN_MARKDOWN_LINK_CHECK
+  # V8R keeps giving false positives
+  - YAML_V8R
+
+SHOW_ELAPSED_TIME: true
+
+FILEIO_REPORTER: false
+
+# Config paths
+CSS_STYLELINT_CONFIG_FILE: stylelint.config.js
+JAVASCRIPT_ES_CONFIG_FILE: .eslintrc
+TYPESCRIPT_ES_CONFIG_FILE: .eslintrc
+
+# Executable overrides
+CSS_STYLELINT_CLI_EXECUTABLE: ['./node_modules/.bin/stylelint']
+
+# Linters configuration
+REPOSITORY_GITLEAKS_DISABLE_ERRORS: true
+REPOSITORY_TRUFFLEHOG_ARGUMENTS: --exclude_paths .trufflehog-ignore
