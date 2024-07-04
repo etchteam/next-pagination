@@ -1,0 +1,6 @@
+node_modules
+.git
+dist
+example/.next
+example/node_modules
+example/next-env.d.ts

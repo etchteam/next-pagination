@@ -1,0 +1,38 @@
+---
+pull_request_rules:
+  - name: Automatically merge security pull requests
+    conditions:
+      - author=dependabot[bot]
+      - label!=wontfix
+      - check-success=🔨 Build
+      - check-success=🧪 Test
+      - check-success=👩‍🎤 Playwright Tests
+      - check-success=🧹 Lint
+      - check-success=SonarCloud Code Analysis
+    actions:
+      review:
+        type: APPROVE
+        message: Automatically approving dependabot
+      merge:
+        method: merge
+  - name: Automatically merge when all checks pass and the PR has been approved
+    conditions:
+      - check-success=🔨 Build
+      - check-success=🧪 Test
+      - check-success=🧹 Lint
+      - check-success=SonarCloud Code Analysis
+      - "#review-requested=0"
+      - "#approved-reviews-by>=1"
+    actions:
+      merge:
+        method: merge
+  - name: Ask for reviews
+    conditions:
+      - -closed
+      - -draft
+      - -author=dependabot[bot]
+    actions:
+      request_reviews:
+        teams:
+          - devs
+        random_count: 1
