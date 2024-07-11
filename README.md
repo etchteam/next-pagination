@@ -105,7 +105,3 @@ In the root folder run `npm run deploy` to deploy the example to github pages on
 ## Publish to npm
 
 Feeling confident? Run `npm publish` to send the latest version to npm.
-
-## License
-
-MIT © [etchteam](https://github.com/etchteam)
