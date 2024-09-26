@@ -1,31 +1,22 @@
 ---
 pull_request_rules:
-  - name: Automatically merge security pull requests
+  - name: Auto-squash dependabot updates when checks pass
     conditions:
       - author=dependabot[bot]
       - label!=wontfix
-      - check-success=🔨 Build
-      - check-success=🧪 Test
-      - check-success=👩‍🎤 Playwright Tests
-      - check-success=🧹 Lint
-      - check-success=SonarCloud Code Analysis
     actions:
       review:
         type: APPROVE
         message: Automatically approving dependabot
       merge:
-        method: merge
-  - name: Automatically merge when all checks pass and the PR has been approved
+        method: squash
+  - name: Auto-squash when all checks pass and the PR has been approved
     conditions:
-      - check-success=🔨 Build
-      - check-success=🧪 Test
-      - check-success=🧹 Lint
-      - check-success=SonarCloud Code Analysis
       - "#review-requested=0"
       - "#approved-reviews-by>=1"
     actions:
       merge:
-        method: merge
+        method: squash
   - name: Ask for reviews
     conditions:
       - -closed
@@ -35,4 +26,10 @@ pull_request_rules:
       request_reviews:
         teams:
           - devs
-        random_count: 1
+  - name: Assign PR to its author
+    conditions:
+      - "#files=1"
+    actions:
+      assign:
+        add_users:
+          - "{{author}}"
