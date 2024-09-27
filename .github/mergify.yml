@@ -1,6 +1,6 @@
 ---
 pull_request_rules:
-  - name: Auto-squash dependabot updates when checks pass
+  - name: Auto-merge dependabot updates when checks pass
     conditions:
       - author=dependabot[bot]
       - label!=wontfix
@@ -9,14 +9,14 @@ pull_request_rules:
         type: APPROVE
         message: Automatically approving dependabot
       merge:
-        method: squash
-  - name: Auto-squash when all checks pass and the PR has been approved
+        method: merge
+  - name: Auto-merge when all checks pass and the PR has been approved
     conditions:
       - "#review-requested=0"
       - "#approved-reviews-by>=1"
     actions:
       merge:
-        method: squash
+        method: merge
   - name: Ask for reviews
     conditions:
       - -closed
