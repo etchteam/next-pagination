@@ -1,5 +1,5 @@
 import React, { EventHandler, useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import NextLink from 'next/link'
 import Head from 'next/head'
 import queryString from 'query-string'
