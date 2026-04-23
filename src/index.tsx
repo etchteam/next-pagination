@@ -15,7 +15,7 @@ import Select from './components/Select'
 import { getSizes } from './lib/sizes'
 import { getPageNumbers } from './lib/get-page-numbers'
 
-import defaultTheme from './index.module.scss'
+import defaultTheme from './index.module.css'
 
 interface PaginationProps {
   /**
@@ -39,9 +39,14 @@ interface PaginationProps {
    */
   setPageSizeText?: string
   /**
-   * Extra props to pass to the next.js links
+   * Extra props to pass to the link component
    */
   linkProps?: { [key: string]: any }
+  /**
+   * Component used to render navigation links. Defaults to next/link.
+   * Must accept `href` and a single anchor child (legacy-behaviour style).
+   */
+  linkComponent?: React.ComponentType<any>
 }
 
 const Pagination = ({
@@ -50,7 +55,8 @@ const Pagination = ({
   sizes,
   perPageText,
   setPageSizeText,
-  linkProps
+  linkProps,
+  linkComponent: LinkComponent = NextLink
 }: PaginationProps) => {
   const styles = theme || defaultTheme
   const router = useRouter()
@@ -90,7 +96,7 @@ const Pagination = ({
       <List theme={styles}>
         <Item theme={styles}>
           {currentPage !== 1 ? (
-            <NextLink
+            <LinkComponent
               href={url(currentPage - 1)}
               prefetch={false}
               passHref
@@ -100,7 +106,7 @@ const Pagination = ({
               <Link label='Previous page' theme={styles}>
                 <Icon icon='chevron-left' />
               </Link>
-            </NextLink>
+            </LinkComponent>
           ) : (
             <Link label='No previous page available' disabled theme={styles}>
               <Icon icon='chevron-left' />
@@ -126,7 +132,7 @@ const Pagination = ({
                   {pageNumber}
                 </Link>
               ) : (
-                <NextLink
+                <LinkComponent
                   href={url(pageNumber)}
                   prefetch={false}
                   passHref
@@ -136,14 +142,14 @@ const Pagination = ({
                   <Link label={`Page ${pageNumber}`} theme={styles}>
                     {pageNumber}
                   </Link>
-                </NextLink>
+                </LinkComponent>
               )}
             </Item>
           )
         )}
         <Item theme={styles}>
           {!isLastPage ? (
-            <NextLink
+            <LinkComponent
               href={url(currentPage + 1)}
               prefetch={false}
               passHref
@@ -153,7 +159,7 @@ const Pagination = ({
               <Link label='Next page' theme={styles}>
                 <Icon icon='chevron-right' />
               </Link>
-            </NextLink>
+            </LinkComponent>
           ) : (
             <Link label='No next page available' disabled theme={styles}>
               <Icon icon='chevron-right' />
@@ -202,7 +208,8 @@ Pagination.defaultProps = {
   perPageText: 'per page',
   setPageSizeText: 'Set page size',
   sizes: undefined,
-  linkProps: {}
+  linkProps: {},
+  linkComponent: undefined
 }
 
 export default Pagination
