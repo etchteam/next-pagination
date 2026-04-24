@@ -1,52 +1,50 @@
-import React, { EventHandler, useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
-import NextLink from 'next/link'
-import Head from 'next/head'
-import queryString from 'query-string'
-import pickBy from 'lodash/pickBy'
 import isEmpty from 'lodash/isEmpty'
+import pickBy from 'lodash/pickBy'
+import Head from 'next/head'
+import NextLink from 'next/link'
+import { useRouter } from 'next/router'
+import queryString from 'query-string'
+import React from 'react'
 
-import List from './components/List'
+import Icon from './components/Icon'
 import Item from './components/Item'
 import Link from './components/Link'
-import Icon from './components/Icon'
+import List from './components/List'
 import Select from './components/Select'
-
-import { getSizes } from './lib/sizes'
-import { getPageNumbers } from './lib/get-page-numbers'
-
 import defaultTheme from './index.module.css'
+import { getPageNumbers } from './lib/get-page-numbers'
+import { getSizes } from './lib/sizes'
 
 interface PaginationProps {
   /**
    * The total number of pages
    */
-  total: number
+  readonly total: number
   /**
    * A CSS modules style object
    */
-  theme?: { [key: string]: any }
+  readonly theme?: { [key: string]: any }
   /**
    * An array of page size numbers
    */
-  sizes?: number[]
+  readonly sizes?: number[]
   /**
    * Label for the page size dropdown
    */
-  perPageText?: string
+  readonly perPageText?: string
   /**
    * Label for the invisible page size button
    */
-  setPageSizeText?: string
+  readonly setPageSizeText?: string
   /**
    * Extra props to pass to the link component
    */
-  linkProps?: { [key: string]: any }
+  readonly linkProps?: { [key: string]: any }
   /**
    * Component used to render navigation links. Defaults to next/link.
    * Must accept `href` and a single anchor child (legacy-behaviour style).
    */
-  linkComponent?: React.ComponentType<any>
+  readonly linkComponent?: React.ComponentType<any>
 }
 
 const Pagination = ({
@@ -60,12 +58,8 @@ const Pagination = ({
 }: PaginationProps) => {
   const styles = theme || defaultTheme
   const router = useRouter()
-  const [hasRouter, setHasRouter] = useState(false)
-  useEffect(() => {
-    setHasRouter(true)
-  }, [router])
 
-  if (!hasRouter) return null
+  if (!router.isReady) return null
   const query = pickBy({ ...(router.query || {}) }, (q) => !isEmpty(q))
   const currentPage = Number(query.page || 1)
   // default|custom => evaluated sizes
