@@ -39,10 +39,14 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            example/package-lock.json
       - run: npm ci
       - run: npm run build
-      - run: npm install --prefix example
+      - run: npm ci --prefix example
       - run: npm run build --prefix example
+      - run: test -f example/build/index.html
   lint:
     name: 🧹 Lint
     runs-on: ubuntu-latest
