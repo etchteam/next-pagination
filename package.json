@@ -30,15 +30,15 @@
     "react": ">=16"
   },
   "dependencies": {
-    "@etchteam/stylelint-config": "^1.7.2",
     "classnames": "^2.3.1",
     "lodash": "4.18.1",
-    "query-string": "6.12.1",
-    "stylelint": "^16.26.1"
+    "prop-types": "^15.8.1",
+    "query-string": "6.12.1"
   },
   "devDependencies": {
     "@eslint/compat": "^2.0.5",
     "@etchteam/eslint-config": "^3.3.3",
+    "@etchteam/stylelint-config": "^1.7.2",
     "@next/eslint-plugin-next": "^16.2.4",
     "@types/jest": "^29.5.12",
     "@types/lodash": "^4.14.182",
@@ -57,9 +57,9 @@
     "next": "^16.1.5",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.8.3",
-    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "stylelint": "^16.26.1",
     "ts-jest": "~29.1.2",
     "typescript": "^4.6.4"
   },
