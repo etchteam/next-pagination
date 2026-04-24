@@ -13,7 +13,7 @@
   },
   "scripts": {
     "dev": "next",
-    "build": "next build && next export -o build",
+    "build": "next build && rm -rf build && mv out build",
     "start": "next start"
   },
   "browserslist": [

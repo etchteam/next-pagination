@@ -62,6 +62,9 @@ export default function Home() {
           Dynamic pagination
         </Link>
       </p>
+      <p>
+        <Link href='/app-example'>App Router pagination</Link>
+      </p>
     </main>
   )
 }

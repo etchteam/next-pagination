@@ -4,6 +4,7 @@ const withSourceMaps = require('@zeit/next-source-maps')()
 const isProd = (process.env.NODE_ENV || 'production') === 'production'
 
 module.exports = withSourceMaps({
+  output: 'export',
   assetPrefix: isProd ? '/next-pagination' : undefined,
   basePath: isProd ? '/next-pagination' : undefined
 })
