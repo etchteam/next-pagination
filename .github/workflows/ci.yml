@@ -41,10 +41,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-      - run: npm install
-        working-directory: example
-      - run: npm run build
-        working-directory: example
+      - run: npm install --prefix example
+      - run: npm run build --prefix example
   lint:
     name: 🧹 Lint
     runs-on: ubuntu-latest
