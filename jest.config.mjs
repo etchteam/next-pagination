@@ -1,9 +1,9 @@
 /** @type {import('jest').Config} */
-module.exports = {
+export default {
   testEnvironment: 'jsdom',
   testMatch: ['**/src/**/*.test.ts?(x)'],
   moduleNameMapper: {
-    '\\.(css|scss|sass)$': '<rootDir>/jest.style-mock.js'
+    '\\.(css|scss|sass)$': '<rootDir>/jest.style-mock.cjs'
   },
   transform: {
     '^.+\\.tsx?$': ['ts-jest', { tsconfig: { jsx: 'react' } }]
