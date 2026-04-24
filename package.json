@@ -21,7 +21,7 @@
     "test:types": "tsc",
     "lint": "run-s lint:js lint:css",
     "lint:js": "eslint .",
-    "lint:css": "stylelint \"**/*.{css,scss}\"",
+    "lint:css": "stylelint \"{src,example/styles}/**/*.{css,scss}\"",
     "predeploy": "cd example && npm install && npm run build && touch build/.nojekyll",
     "deploy": "gh-pages -t -d example/build"
   },
