@@ -4,34 +4,24 @@ const path = require('path')
 const DIRECTIVE = "'use client';\n"
 const ESM_MARKER = "Object.defineProperty(exports, '__esModule', { value: true });\n"
 
-function prepend(file, snippet) {
+function patch(file, { addDirective, addEsModule }) {
+  if (!fs.existsSync(file)) return
   const contents = fs.readFileSync(file, 'utf8')
-  if (contents.includes(snippet.trim())) return contents
-  const next = snippet + contents
-  fs.writeFileSync(file, next)
-  return next
+  const hasDirective =
+    contents.startsWith("'use client'") || contents.startsWith('"use client"')
+  const hasEsModule = contents.includes('__esModule')
+  let prefix = ''
+  if (addDirective && !hasDirective) prefix += DIRECTIVE
+  if (addEsModule && !hasEsModule) prefix += ESM_MARKER
+  if (!prefix) return
+  fs.writeFileSync(file, prefix + contents)
 }
 
-for (const rel of ['dist/index.js', 'dist/index.modern.js']) {
-  const file = path.join(__dirname, '..', rel)
-  if (!fs.existsSync(file)) continue
-  let contents = fs.readFileSync(file, 'utf8')
-  if (!contents.startsWith("'use client'") && !contents.startsWith('"use client"')) {
-    contents = DIRECTIVE + contents
-    fs.writeFileSync(file, contents)
-  }
-}
-
-// CJS output needs the __esModule marker so `import X from 'pkg'` picks up
-// `.default` instead of the whole exports object when both default + named
-// exports exist. microbundle-crl doesn't emit it.
-const cjs = path.join(__dirname, '..', 'dist/index.js')
-if (fs.existsSync(cjs)) {
-  const contents = fs.readFileSync(cjs, 'utf8')
-  if (!contents.includes("__esModule")) {
-    const lines = contents.split('\n')
-    const insertAt = lines[0].startsWith("'use client'") || lines[0].startsWith('"use client"') ? 1 : 0
-    lines.splice(insertAt, 0, ESM_MARKER.trim())
-    fs.writeFileSync(cjs, lines.join('\n'))
-  }
-}
+const root = path.join(__dirname, '..')
+// CJS bundle needs both: 'use client' for Next.js to treat the module as a
+// client component (microbundle strips the source directive), and the
+// __esModule marker so consumers' default-import interop resolves
+// `exports.default` instead of the whole exports object.
+patch(path.join(root, 'dist/index.js'), { addDirective: true, addEsModule: true })
+// ESM bundle only needs the directive; named/default exports work natively.
+patch(path.join(root, 'dist/index.modern.js'), { addDirective: true, addEsModule: false })

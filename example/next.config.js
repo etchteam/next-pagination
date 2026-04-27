@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const withSourceMaps = require('@zeit/next-source-maps')()
 
-const isProd = (process.env.NODE_ENV || 'production') === 'production'
+const isDeploy = process.env.EXAMPLE_DEPLOY === 'true'
 
 module.exports = withSourceMaps({
-  output: 'export',
-  assetPrefix: isProd ? '/next-pagination' : undefined,
-  basePath: isProd ? '/next-pagination' : undefined
+  output: isDeploy ? 'export' : undefined,
+  assetPrefix: isDeploy ? '/next-pagination' : undefined,
+  basePath: isDeploy ? '/next-pagination' : undefined
 })

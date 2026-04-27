@@ -12,10 +12,9 @@ const AppPagination = (props: PaginationProps) => {
 
   const query: Record<string, string | string[]> = {}
   if (searchParams) {
-    const seen: Record<string, true> = {}
-    searchParams.forEach((_value, key) => {
-      if (seen[key]) return
-      seen[key] = true
+    const keys = new Set<string>()
+    searchParams.forEach((_value, key) => keys.add(key))
+    keys.forEach((key) => {
       const values = searchParams.getAll(key)
       query[key] = values.length > 1 ? values : values[0]
     })

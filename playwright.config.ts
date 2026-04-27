@@ -15,9 +15,13 @@ export default defineConfig({
   },
   projects: [{ name: 'chromium', use: devices['Desktop Chrome'] }],
   webServer: {
-    command: 'npm --prefix example run dev',
+    // CI runs the production bundle (build + start) so the suite exercises
+    // the same output users ship; local dev keeps the fast `next dev` loop.
+    command: process.env.CI
+      ? 'npm --prefix example run build:server && npm --prefix example run start'
+      : 'npm --prefix example run dev',
     url: BASE_URL,
     reuseExistingServer: !process.env.CI,
-    timeout: 120_000
+    timeout: 180_000
   }
 })
