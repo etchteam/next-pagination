@@ -1,10 +1,13 @@
-import Pagination from '.'
+import Pagination, { PagesPagination, AppPagination } from '.'
 import { getSizes } from './lib/sizes'
 import assert from 'assert'
 
 describe('Pagination', () => {
-  it('is truthy', () => {
-    expect(Pagination).toBeTruthy()
+  it('default export is PagesPagination', () => {
+    expect(Pagination).toBe(PagesPagination)
+  })
+  it('exposes AppPagination as a distinct named export', () => {
+    expect(AppPagination).not.toBe(PagesPagination)
   })
 })
 

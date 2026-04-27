@@ -2,7 +2,7 @@
 name: 👮 CI
 on:
   pull_request:
-    branches: [main]
+    branches: [main, modernize]
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -34,6 +34,28 @@ jobs:
           cache: npm
       - run: npm ci --no-scripts
       - run: npm test
+  e2e:
+    name: 🎭 E2E
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      # `file:..` deps can be served from npm's cache; `install --no-package-lock`
+      # forces npm to re-pack the freshly built dist/ on every CI run instead.
+      - run: npm --prefix example install --no-package-lock
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report
+          retention-days: 7
   lint:
     name: 🧹 Lint
     runs-on: ubuntu-latest

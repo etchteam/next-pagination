@@ -13,7 +13,8 @@
   },
   "scripts": {
     "dev": "next",
-    "build": "next build && next export -o build",
+    "build": "EXAMPLE_DEPLOY=true next build && rm -rf build && mv out build",
+    "build:server": "next build",
     "start": "next start"
   },
   "browserslist": [

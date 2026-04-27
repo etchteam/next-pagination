@@ -8,23 +8,43 @@
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.modern.js",
+      "require": "./dist/index.js"
+    },
+    "./app": {
+      "types": "./dist/app.d.ts",
+      "import": "./dist/app.modern.js",
+      "require": "./dist/app.js"
+    },
+    "./pages": {
+      "types": "./dist/pages.d.ts",
+      "import": "./dist/pages.modern.js",
+      "require": "./dist/pages.js"
+    },
+    "./dist/index.css": "./dist/index.css",
+    "./package.json": "./package.json"
+  },
   "engines": {
     "node": "^20 || ^22 || ^24"
   },
   "scripts": {
-    "build": "microbundle-crl --no-compress --format modern,cjs",
-    "start": "microbundle-crl watch --no-compress --format modern,cjs",
+    "build": "rimraf dist && microbundle-crl --no-compress --format modern,cjs -i src/index.tsx -i src/app.tsx -i src/pages.tsx && node scripts/postbuild.js",
+    "start": "microbundle-crl watch --no-compress --format modern,cjs -i src/index.tsx -i src/app.tsx -i src/pages.tsx",
     "prepare": "run-s build",
     "test": "run-s test:types test:unit",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
     "test:types": "tsc",
+    "test:e2e": "playwright test",
     "predeploy": "cd example && npm install && npm run build && touch build/.nojekyll",
     "deploy": "gh-pages -t -d example/build"
   },
   "peerDependencies": {
-    "react": ">=16",
-    "next": ">=10"
+    "next": ">=10",
+    "react": ">=16"
   },
   "dependencies": {
     "classnames": "^2.3.1",
@@ -32,6 +52,9 @@
     "query-string": "6.12.1"
   },
   "devDependencies": {
+    "@playwright/test": "1.59.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^14.3.1",
     "@types/jest": "^27.5.0",
     "@types/lodash": "^4.14.182",
     "@types/node": "^17.0.31",

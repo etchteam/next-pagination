@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-import Pagination from '@etchteam/next-pagination/dist'
+import Pagination from '@etchteam/next-pagination/pages'
 
 import theme from '../styles/theme.module.scss'
 
@@ -61,6 +61,9 @@ export default function Home() {
         <Link href='[dynamic]' as='dynamic-test'>
           Dynamic pagination
         </Link>
+      </p>
+      <p>
+        <Link href='/app-example'>App Router pagination</Link>
       </p>
     </main>
   )
