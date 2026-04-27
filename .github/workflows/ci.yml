@@ -41,7 +41,9 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-      - run: npm --prefix example ci
+      # `file:..` deps can be served from npm's cache; `install --no-package-lock`
+      # forces npm to re-pack the freshly built dist/ on every CI run instead.
+      - run: npm --prefix example install --no-package-lock
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
       - uses: actions/upload-artifact@v4

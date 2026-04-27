@@ -1,5 +1,5 @@
 import React from 'react'
-import Pagination from '@etchteam/next-pagination/dist'
+import Pagination from '@etchteam/next-pagination/pages'
 
 export default function Dynamic() {
   return (

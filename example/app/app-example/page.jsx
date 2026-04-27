@@ -1,7 +1,7 @@
 'use client'
 
 import React, { Suspense } from 'react'
-import { AppPagination } from '@etchteam/next-pagination/dist'
+import { AppPagination } from '@etchteam/next-pagination/app'
 
 import theme from '../../styles/theme.module.scss'
 

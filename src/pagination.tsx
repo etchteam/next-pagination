@@ -81,11 +81,28 @@ const Pagination = ({
 
   if (!mounted) return null
   const query = pickBy({ ...routing.query }, (q) => !isEmpty(q))
-  const currentPage = Number(query.page || 1)
   const cSizes = getSizes(sizes)
-  const pageSize = Number(query.size) || cSizes[0]
-  const isLastPage = currentPage * pageSize >= total
-  const pageNumbers = getPageNumbers({ currentPage, pageSize, total })
+  const safeTotal =
+    Number.isFinite(total) && total >= 0 ? Math.floor(total) : 0
+
+  const rawSize = Array.isArray(query.size) ? query.size[0] : query.size
+  const parsedSize = Number.parseInt(rawSize ?? '', 10)
+  const pageSize = cSizes.includes(parsedSize) ? parsedSize : cSizes[0]
+
+  const lastPage = Math.max(1, Math.ceil(safeTotal / pageSize))
+  const rawPage = Array.isArray(query.page) ? query.page[0] : query.page
+  const parsedPage = Number.parseInt(rawPage ?? '', 10)
+  const currentPage =
+    Number.isFinite(parsedPage) && parsedPage >= 1
+      ? Math.min(parsedPage, lastPage)
+      : 1
+
+  const isLastPage = currentPage * pageSize >= safeTotal
+  const pageNumbers = getPageNumbers({
+    currentPage,
+    pageSize,
+    total: safeTotal
+  })
 
   const path = routing.pathname
 
