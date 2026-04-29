@@ -1,5 +1,5 @@
-import isInteger from 'lodash/isInteger'
 import every from 'lodash/every'
+import isInteger from 'lodash/isInteger'
 import uniq from 'lodash/uniq'
 
 export const getSizes = (customSizes?: number[]) => {

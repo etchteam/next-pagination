@@ -1,10 +1,10 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+
 import Icon from './Icon'
 
 interface SelectProps {
-  children: React.ReactNode
-  theme: { [key: string]: any }
+  readonly children: React.ReactNode
+  readonly theme: { [key: string]: any }
   [key: string]: any
 }
 

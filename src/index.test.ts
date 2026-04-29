@@ -1,6 +1,8 @@
-import Pagination from '.'
-import { getSizes } from './lib/sizes'
 import assert from 'assert'
+
+import { getSizes } from './lib/sizes'
+
+import Pagination from '.'
 
 describe('Pagination', () => {
   it('is truthy', () => {

@@ -1,12 +1,12 @@
-import React from 'react'
 import classNames from 'classnames'
+import React from 'react'
 
 interface LinkProps {
-  children: React.ReactNode
-  label: string
-  theme: { [key: string]: any }
-  current?: boolean
-  disabled?: boolean
+  readonly children: React.ReactNode
+  readonly label: string
+  readonly theme: { [key: string]: any }
+  readonly current?: boolean
+  readonly disabled?: boolean
   [key: string]: any
 }
 
