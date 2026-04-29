@@ -1,8 +1,8 @@
 import React from 'react'
 
 interface ItemProps {
-  children: React.ReactNode
-  theme: { [key: string]: any }
+  readonly children: React.ReactNode
+  readonly theme: { [key: string]: any }
   [key: string]: any
 }
 

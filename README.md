@@ -59,20 +59,55 @@ You'll need to load the actual data from your API yourself. We're only here for 
 
 | Name                     | Type       | Description                               |
 | ------------------------ | ---------- | ----------------------------------------- |
-| `total`                  | `Number`   | **Required.** The total number of pages.  |
-| `theme`                  | `Object`   | A CSS modules style object.               |
-| `sizes`                  | `Array`    | An array of page size numbers             |
-| `perPageText`            | `String`   | Label for the page size dropdown          |
-| `setPageSizeText`        | `String`   | Label for the invisible page size button  |
-| `linkProps`              | `Object`   | Extra props to pass to the next.js links  |
+| `total`                  | `Number`    | **Required.** The total number of pages.                                              |
+| `theme`                  | `Object`    | A CSS modules style object.                                                           |
+| `sizes`                  | `Array`     | An array of page size numbers                                                         |
+| `perPageText`            | `String`    | Label for the page size dropdown                                                      |
+| `setPageSizeText`        | `String`    | Label for the invisible page size button                                              |
+| `linkProps`              | `Object`    | Extra props to pass to the link component                                             |
+| `linkComponent`          | `Component` | Custom link component. Defaults to `next/link`. Receives `href` + a legacy-behaviour anchor child. |
 
 ## Theming
-Next.js natively supports **CSS modules**, so this component supports injecting CSS module styles.
 
-Import the styles as you would for a normal component, but pass them as props.
+### CSS custom properties (recommended)
+
+The component exposes every theme value as a CSS custom property scoped to `.next-pagination`. Override any of them in your own stylesheet:
+
+```css
+.my-container .next-pagination {
+  --next-pagination-interactive-color: hotpink;
+  --next-pagination-border-radius: 8px;
+}
+```
+
+Available variables:
+
+```
+--next-pagination-interactive-color
+--next-pagination-spacing-vertical
+--next-pagination-spacing-horizontal
+--next-pagination-spacing-vertical-sm
+--next-pagination-spacing-horizontal-sm
+--next-pagination-border-width
+--next-pagination-border-radius
+--next-pagination-line-height
+--next-pagination-item-background
+--next-pagination-item-background-current
+--next-pagination-item-background-disabled
+--next-pagination-item-color
+--next-pagination-item-color-current
+--next-pagination-item-color-disabled
+--next-pagination-item-border-color
+--next-pagination-select-background
+--next-pagination-select-border-color
+--next-pagination-select-border-color-hover
+```
+
+### Full class-name override
+
+For deeper customisation, pass a CSS modules style object via the `theme` prop:
 
 ```jsx
-[...]
 import styles from '/my/path/to/styles.module.css'
 
 class Example extends Component {
@@ -82,7 +117,23 @@ class Example extends Component {
 }
 ```
 
-The theme uses BEM class naming with the base class `next-pagination`. The file `/src/index.module.scss` should give you a solid idea of what's needed.
+The theme uses BEM class naming with the base class `next-pagination`. The file `/src/index.module.css` shows the full class list.
+
+## Custom link component
+
+By default the component renders navigation links with `next/link`. If you need to wrap or replace it (e.g. to add a custom prefetch strategy, swap in an app-router variant, or inject a shared analytics wrapper), pass your own via `linkComponent`:
+
+```jsx
+import NextLink from 'next/link'
+
+const TrackedLink = (props) => (
+  <NextLink {...props} onClick={() => track('pagination')} />
+)
+
+<Pagination total={1000} linkComponent={TrackedLink} />
+```
+
+The component must accept `href`, `prefetch`, `passHref`, `legacyBehavior`, and a single anchor child.
 
 ## Contribute
 
