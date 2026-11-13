@@ -10,12 +10,11 @@ DISABLE:
   - SPELL
 
 DISABLE_LINTERS:
-  # We use stylelint for CSS and SCSS linting
-  - CSS_SCSS_LINT
   # Disable in favour of eslint
   - JAVASCRIPT_STANDARD
   # We use dependabot for vulnerability monitoring and patching
   - REPOSITORY_GRYPE
+  - REPOSITORY_OSV_SCANNER
   # Not needed in this repository
   - REPOSITORY_TRIVY
   # Disable in favour of eslint
@@ -30,13 +29,15 @@ SHOW_ELAPSED_TIME: true
 FILEIO_REPORTER: false
 
 # Config paths
-CSS_STYLELINT_CONFIG_FILE: stylelint.config.js
-JAVASCRIPT_ES_CONFIG_FILE: .eslintrc
-TYPESCRIPT_ES_CONFIG_FILE: .eslintrc
+JAVASCRIPT_ES_CONFIG_FILE: eslint.config.mjs
+TYPESCRIPT_ES_CONFIG_FILE: eslint.config.mjs
 
 # Executable overrides
 CSS_STYLELINT_CLI_EXECUTABLE: ['./node_modules/.bin/stylelint']
+JAVASCRIPT_ES_CLI_EXECUTABLE: ['./node_modules/.bin/eslint']
+TYPESCRIPT_ES_CLI_EXECUTABLE: ['./node_modules/.bin/eslint']
 
 # Linters configuration
-REPOSITORY_GITLEAKS_DISABLE_ERRORS: true
-REPOSITORY_TRUFFLEHOG_ARGUMENTS: --exclude_paths .trufflehog-ignore
+# zizmor reads action repositories through the GitHub API
+ACTION_ZIZMOR_UNSECURED_ENV_VARIABLES:
+  - GITHUB_TOKEN

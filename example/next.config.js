@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
 const withSourceMaps = require('@zeit/next-source-maps')()
 
 const isProd = (process.env.NODE_ENV || 'production') === 'production'

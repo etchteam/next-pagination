@@ -1,0 +1,7 @@
+---
+rules:
+  unpinned-uses:
+    config:
+      policies:
+        # The Actions lockfile pins each tag to a commit
+        "*": ref-pin
