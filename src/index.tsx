@@ -2,7 +2,6 @@ import React, { EventHandler, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import NextLink from 'next/link'
 import Head from 'next/head'
-import queryString from 'query-string'
 import pickBy from 'lodash/pickBy'
 import isEmpty from 'lodash/isEmpty'
 
@@ -13,6 +12,7 @@ import Icon from './components/Icon'
 import Select from './components/Select'
 
 import { getSizes } from './lib/sizes'
+import { stringifyQuery } from './lib/stringify-query'
 import { getPageNumbers } from './lib/get-page-numbers'
 
 import defaultTheme from './index.module.scss'
@@ -71,7 +71,7 @@ const Pagination = ({
   const path = router.pathname
 
   const url = (page: number | string) =>
-    `?${queryString.stringify({
+    `?${stringifyQuery({
       ...query,
       page
     })}`
@@ -177,7 +177,7 @@ const Pagination = ({
           id='next-pagination__size'
           defaultValue={pageSize}
           onChange={(event: Event) => {
-            const url = `${router.pathname}?${queryString.stringify({
+            const url = `${router.pathname}?${stringifyQuery({
               ...query,
               page: 1,
               size: (event.target as HTMLSelectElement).value

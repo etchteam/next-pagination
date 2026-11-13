@@ -1,5 +1,6 @@
 import Pagination from '.'
 import { getSizes } from './lib/sizes'
+import { stringifyQuery } from './lib/stringify-query'
 import assert from 'assert'
 
 describe('Pagination', () => {
@@ -23,5 +24,17 @@ describe('Custom Sizes', () => {
       [20, 40, 60, 80, 100]
     )
     assert.deepStrictEqual(getSizes([{}, {}] as any[]), [20, 40, 60, 80, 100])
+  })
+})
+
+describe('Stringify Query', () => {
+  it('should join keys and values', () => {
+    assert.strictEqual(stringifyQuery({ q: 'a b', page: 2 }), 'q=a+b&page=2')
+  })
+  it('should repeat the key for array values', () => {
+    assert.strictEqual(
+      stringifyQuery({ tag: ['a', 'b'], page: 1 }),
+      'tag=a&tag=b&page=1'
+    )
   })
 })
